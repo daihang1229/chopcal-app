@@ -1,0 +1,56 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace = "com.rainbow.compose.ui"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+
+    defaultConfig {
+        minSdk = libs.versions.minSdk.get().toInt()
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        compose = true
+    }
+}
+
+dependencies {
+    api(project(":lib-compose-core"))
+
+    api(platform(libs.compose.bom))
+    api(libs.compose.ui)
+    api(libs.compose.foundation)
+    api(libs.compose.material3)
+    api(libs.compose.material.icons.extended)
+    api(libs.compose.ui.tooling.preview)
+    api(libs.lottie.compose)
+
+    // 图片加载
+    api(libs.coil.compose)
+    api(libs.coil.network.okhttp)
+
+    debugImplementation(libs.compose.ui.tooling)
+}

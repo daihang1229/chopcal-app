@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "ChopCal"
 include(":app")
+include(":lib-compose-core")
+include(":lib-compose-ui")
