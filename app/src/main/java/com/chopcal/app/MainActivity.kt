@@ -1,84 +1,81 @@
 package com.chopcal.app
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PhotoCamera
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.chopcal.app.page.home.HomeScreen
+import com.chopcal.app.page.profile.ProfileScreen
+import com.chopcal.app.page.record.RecordScreen
+import com.rainbow.compose.ui.BaseCommonComposeActivity
 
 /**
- * ChopCal 主入口 Activity。
- *
- * 目前是项目骨架阶段：仅展示品牌占位页，Compose MVI 基础库接入后再替换为正式页面。
+ * ChopCal 主入口 Activity，承载底部三 Tab。
  */
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseCommonComposeActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ChopCalTheme {
-                WelcomeScreen()
+    }
+
+    @Composable
+    override fun screen() {
+        MainScreen()
+    }
+}
+
+private data class TabItem(
+    val title: String,
+    val icon: ImageVector,
+)
+
+private val tabs = listOf(
+    TabItem("拍照", Icons.Filled.PhotoCamera),
+    TabItem("记录", Icons.AutoMirrored.Filled.List),
+    TabItem("我的", Icons.Filled.Person),
+)
+
+@Composable
+private fun MainScreen() {
+    var selectedTab by remember { mutableIntStateOf(0) }
+
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
+        bottomBar = {
+            NavigationBar {
+                tabs.forEachIndexed { index, tab ->
+                    NavigationBarItem(
+                        selected = selectedTab == index,
+                        onClick = { selectedTab = index },
+                        icon = { Icon(tab.icon, contentDescription = tab.title) },
+                        label = { Text(tab.title) },
+                    )
+                }
+            }
+        },
+    ) { padding ->
+        Box(Modifier.padding(padding)) {
+            when (selectedTab) {
+                0 -> HomeScreen()
+                1 -> RecordScreen()
+                2 -> ProfileScreen()
             }
         }
-    }
-}
-
-/** ChopCal 主题：品牌绿色（与 App icon 一致） */
-@Composable
-fun ChopCalTheme(content: @Composable () -> Unit) {
-    val colorScheme = lightColorScheme(
-        primary = BrandGreen,
-        onPrimary = Color.White,
-        secondary = BrandOrange,
-    )
-    MaterialTheme(colorScheme = colorScheme, content = content)
-}
-
-/** 品牌色 */
-val BrandGreen = Color(0xFF16A34A)
-val BrandOrange = Color(0xFFF59E0B)
-
-/** 骨架占位页：品牌名 + Slogan */
-@Composable
-fun WelcomeScreen() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Text(
-            text = "ChopCal",
-            fontSize = 48.sp,
-            fontWeight = FontWeight.Bold,
-            color = BrandGreen,
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = "Know every bite",
-            fontSize = 18.sp,
-            color = Color.Gray,
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun WelcomeScreenPreview() {
-    ChopCalTheme {
-        WelcomeScreen()
     }
 }

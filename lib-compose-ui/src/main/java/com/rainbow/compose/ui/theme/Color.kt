@@ -9,11 +9,11 @@ import androidx.compose.ui.graphics.Color
 // ════════════════════════════════════════════════════════════════
 
 // ── Primary ────────────────────────────────────────────────────
-val CommonPrimaryMain      = Color(0xFFFF175D)  // main
-val CommonPrimarySecondary = Color(0xFFFF6D99)  // light
+val CommonPrimaryMain      = Color(0xFF16A34A)  // main（ChopCal 品牌绿）
+val CommonPrimarySecondary = Color(0xFF22C55E)  // light
 val CommonPrimaryWhite     = Color(0xFFFFFFFF)
 val CommonPrimaryBlack     = Color(0xFF000000)
-val CommonPrimaryAlpha     = Color(0x14FF175D)  // opacity_14
+val CommonPrimaryAlpha     = Color(0x1416A34A)  // opacity_14
 
 // ── Secondary ──────────────────────────────────────────────────
 val CommonSecondary01 = Color(0xFFF54E96)
