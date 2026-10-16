@@ -1,0 +1,16 @@
+# Android Studio / IntelliJ
+.idea/
+*.iml
+local.properties
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# macOS
+.DS_Store
+
+# Secrets
+*.keystore
+!debug.keystore

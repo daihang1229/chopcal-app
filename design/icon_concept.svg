@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#15803D"/>
+    </linearGradient>
+    <linearGradient id="chop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+    <linearGradient id="food" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景：圆角方形 -->
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+
+  <!-- 左筷子（上粗下细，斜向右下） -->
+  <path d="M 168 96 C 180 96 190 104 196 118 L 236 380 C 238 394 230 404 218 404
+           C 206 404 196 396 194 382 L 154 120 C 152 106 160 96 168 96 Z"
+        fill="url(#chop)"/>
+
+  <!-- 右筷子（上粗下细，斜向左下） -->
+  <path d="M 344 96 C 332 96 322 104 316 118 L 276 380 C 274 394 282 404 294 404
+           C 306 404 316 396 318 382 L 358 120 C 360 106 352 96 344 96 Z"
+        fill="url(#chop)"/>
+
+  <!-- 筷子夹着的"卡路里"食物圆点 -->
+  <circle cx="256" cy="290" r="66" fill="url(#food)"/>
+
+  <!-- 圆点上的高光 -->
+  <circle cx="236" cy="270" r="18" fill="#FFFFFF" opacity="0.45"/>
+
+  <!-- 底部小字点缀：一根绿色横线表示"均衡/进度" -->
+  <rect x="196" y="430" width="120" height="14" rx="7" fill="#FFFFFF" opacity="0.85"/>
+</svg>
