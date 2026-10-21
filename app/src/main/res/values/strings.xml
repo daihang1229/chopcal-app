@@ -1,3 +1,153 @@
 <resources>
     <string name="app_name">ChopCal</string>
+
+    <!-- Common -->
+    <string name="common_continue">Continue</string>
+    <string name="common_back">Go back</string>
+    <string name="common_back_edit">Go back and edit</string>
+    <string name="common_skip">Skip</string>
+    <string name="skip_for_now">Skip for now</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="skip_dialog_title">Skip setup?</string>
+    <string name="skip_dialog_message">We\'ll use default data to plan and log your meals. You can update it anytime in your profile.</string>
+
+    <!-- Goals -->
+    <string name="goal_lose">Lose weight</string>
+    <string name="goal_lose_desc">Shed pounds and build a lighter rhythm</string>
+    <string name="goal_maintain">Maintain weight</string>
+    <string name="goal_maintain_desc">Stay on track and eat more mindfully</string>
+    <string name="goal_gain">Gain weight</string>
+    <string name="goal_gain_desc">Progress gradually and fill your daily needs</string>
+    <string name="goal_muscle">Build muscle</string>
+    <string name="goal_muscle_desc">Fuel your training and recovery</string>
+
+    <!-- Gender -->
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_other">Other</string>
+
+    <!-- Activity -->
+    <string name="activity_sedentary">Sedentary</string>
+    <string name="activity_sedentary_desc">Desk job or studying, little exercise</string>
+    <string name="activity_light">Lightly active</string>
+    <string name="activity_light_desc">Daily walking, exercise 1–2 times a week</string>
+    <string name="activity_moderate">Moderately active</string>
+    <string name="activity_moderate_desc">Exercise 3–5 times a week</string>
+    <string name="activity_high">Very active</string>
+    <string name="activity_high_desc">Exercise 6–7 times a week or physical work</string>
+    <string name="activity_very_high">Extremely active</string>
+    <string name="activity_very_high_desc">Athlete or heavy physical labor</string>
+
+    <!-- BMI -->
+    <string name="bmi_underweight">Underweight</string>
+    <string name="bmi_underweight_note">Your BMI is low. Focus on nutrition — gaining weight or muscle may suit you better.</string>
+    <string name="bmi_normal">Healthy</string>
+    <string name="bmi_normal_note">Your BMI is in the healthy range — a good pace for gradual adjustment.</string>
+    <string name="bmi_overweight">Overweight</string>
+    <string name="bmi_overweight_note">Your BMI is high. Consider focusing on weight loss and diet.</string>
+
+    <!-- Validation errors -->
+    <string name="error_age_range">Please enter an age between 13 and 100</string>
+    <string name="error_height">Please enter a valid height</string>
+    <string name="error_weight">Please enter a valid weight</string>
+    <string name="error_target_lower">Target weight should be lower than your current weight</string>
+    <string name="error_target_higher">Target weight should be higher than your current weight</string>
+    <string name="error_rate_too_fast_lose">This goal is too aggressive — consider a slower pace for your health</string>
+    <string name="error_rate_too_fast_gain">Gaining too fast can add fat — consider slowing down</string>
+    <string name="error_timeline_range">Please choose between 1 and 104 weeks</string>
+
+    <!-- Welcome -->
+    <string name="welcome_kicker">Eat smarter, starting with one photo</string>
+    <string name="welcome_title">Snap a photo,\nknow the calories in your meal.</string>
+    <string name="welcome_sub">AI recognition built for Chinese food, so every meal adds up.</string>
+    <string name="welcome_cta">Create my daily plan</string>
+    <string name="welcome_legal">About 30 seconds · No sign-up · Your data, your control</string>
+    <string name="welcome_countdown">Setting up your plan in %1$ds</string>
+
+    <!-- Goal step -->
+    <string name="goal_kicker">01 / Your goal</string>
+    <string name="goal_title">What do you want to achieve?</string>
+    <string name="goal_sub">Start with the change you\'re looking for.</string>
+
+    <!-- Basic info -->
+    <string name="basic_kicker">02 / About you</string>
+    <string name="basic_title">Make your plan fit you.</string>
+    <string name="basic_sub">This only helps estimate your daily nutrition target.</string>
+    <string name="label_sex">Biological sex</string>
+    <string name="label_age">Your age</string>
+    <string name="unit_years">years</string>
+    <string name="hint_age_range">Age range 13–100</string>
+
+    <!-- Body data -->
+    <string name="body_kicker">03 / Body metrics</string>
+    <string name="body_title">Note your starting point.</string>
+    <string name="body_sub">Used only to estimate body range and energy needs.</string>
+    <string name="label_height">Height</string>
+    <string name="label_weight">Current weight</string>
+    <string name="hint_update_profile">You can update these anytime in your profile.</string>
+    <string name="toggle_metric">Metric cm / kg</string>
+    <string name="toggle_imperial">Imperial ft·in / lb</string>
+
+    <!-- BMI feedback -->
+    <string name="bmi_kicker">Body range · For reference only</string>
+    <string name="bmi_title">Your body, at its own pace.</string>
+    <string name="bmi_info">BMI doesn\'t distinguish muscle from fat. It\'s only a reference — we\'ll combine it with other info.</string>
+
+    <!-- Target -->
+    <string name="target_kicker">04 / Your target</string>
+    <string name="target_title_lose">Set the pace for change.</string>
+    <string name="target_title_gain">Set the pace for growth.</string>
+    <string name="target_sub">Steady progress beats an unrealistic deadline.</string>
+    <string name="label_target_weight">Target weight</string>
+    <string name="label_timeline">When do you want to reach it?</string>
+    <string name="option_1_month">1 month</string>
+    <string name="option_3_months">3 months</string>
+    <string name="option_6_months">6 months</string>
+    <string name="option_custom">Custom</string>
+    <string name="unit_weeks">weeks</string>
+
+    <!-- Activity -->
+    <string name="activity_kicker">05 / Daily activity</string>
+    <string name="activity_title">How active are you?</string>
+    <string name="activity_sub">Pick what matches most of your days.</string>
+    <string name="activity_generate_plan">Generate my plan</string>
+
+    <!-- Result -->
+    <string name="result_kicker">Your daily plan</string>
+    <string name="result_title">Simple, and just right.</string>
+    <string name="result_start_logging">Start logging meals</string>
+    <string name="result_kcal_day">kcal / day</string>
+    <string name="result_daily_energy_target">DAILY ENERGY TARGET</string>
+    <string name="result_protein">%1$dg protein</string>
+    <string name="result_target_date">%1$s target</string>
+
+    <!-- Breakdown -->
+    <string name="breakdown_title">How we calculated this</string>
+    <string name="breakdown_bmr">Basal metabolic rate (BMR)</string>
+    <string name="breakdown_tdee">Daily energy burn (TDEE)</string>
+    <string name="breakdown_adjustment">Goal adjustment</string>
+    <string name="breakdown_floor_note">We set a safe lower limit to protect your metabolism. Your target was adjusted to it — try a longer timeline or more activity.</string>
+    <string name="privacy_placeholder">Privacy &amp; compliance — coming soon</string>
+
+    <!-- Finish -->
+    <string name="finish_kicker">You\'re all set</string>
+    <string name="finish_title">From your next meal,\nunderstand your choices better.</string>
+    <string name="finish_sub">Snap photos of your food and log every meal.</string>
+    <string name="finish_setting_reminder">Daily logging reminder</string>
+    <string name="finish_setting_reminder_sub">Log regularly to see change</string>
+    <string name="finish_setting_privacy">Your data, in your control</string>
+    <string name="finish_setting_privacy_sub">See how we protect your info</string>
+    <string name="finish_action_turn_on">Turn on</string>
+    <string name="finish_enter">Enter ChopCal</string>
+    <string name="finish_legal">Free: 3 scans a day · No sign-up needed</string>
+
+    <!-- Tabs -->
+    <string name="tab_camera">Camera</string>
+    <string name="tab_history">History</string>
+    <string name="tab_profile">Profile</string>
+
+    <!-- Skeleton -->
+    <string name="home_tagline">Snap a photo to see your meal\'s calories</string>
+    <string name="record_placeholder">Meal history, charts, and your daily plan will appear here</string>
+    <string name="profile_placeholder">Personal info and settings will appear here</string>
 </resources>

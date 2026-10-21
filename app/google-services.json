@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "829081104995",
+    "project_id": "chopcal-c5399",
+    "storage_bucket": "chopcal-c5399.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829081104995:android:453b38b6925c16d8dfbe56",
+        "android_client_info": {
+          "package_name": "com.chopcal.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGD1-2fimHyHfKjKxUWPlBxNjcvfZKAGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

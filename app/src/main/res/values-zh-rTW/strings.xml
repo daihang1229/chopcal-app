@@ -1,0 +1,153 @@
+<resources>
+    <string name="app_name">ChopCal</string>
+
+    <!-- Common -->
+    <string name="common_continue">繼續</string>
+    <string name="common_back">返回上一步</string>
+    <string name="common_back_edit">返回修改</string>
+    <string name="common_skip">跳過</string>
+    <string name="skip_for_now">跳過，先體驗</string>
+    <string name="common_cancel">取消</string>
+    <string name="skip_dialog_title">跳過填寫？</string>
+    <string name="skip_dialog_message">我們將以預設資料為你記錄和規劃，之後可隨時在個人中心修改。</string>
+
+    <!-- Goals -->
+    <string name="goal_lose">減輕體重</string>
+    <string name="goal_lose_desc">溫和減脂，建立輕盈節奏</string>
+    <string name="goal_maintain">維持狀態</string>
+    <string name="goal_maintain_desc">維持現狀，吃得更加明白</string>
+    <string name="goal_gain">增加體重</string>
+    <string name="goal_gain_desc">循序漸進，補足每日所需</string>
+    <string name="goal_muscle">增加肌肉</string>
+    <string name="goal_muscle_desc">為訓練和恢復提供支持</string>
+
+    <!-- Gender -->
+    <string name="gender_male">男性</string>
+    <string name="gender_female">女性</string>
+    <string name="gender_other">其他</string>
+
+    <!-- Activity -->
+    <string name="activity_sedentary">久坐為主</string>
+    <string name="activity_sedentary_desc">辦公或學習，幾乎不運動</string>
+    <string name="activity_light">輕度活動</string>
+    <string name="activity_light_desc">日常走動，每週運動 1–2 次</string>
+    <string name="activity_moderate">中度活動</string>
+    <string name="activity_moderate_desc">每週規律運動 3–5 次</string>
+    <string name="activity_high">高強度活動</string>
+    <string name="activity_high_desc">每週運動 6–7 次或體力工作</string>
+    <string name="activity_very_high">非常高強度</string>
+    <string name="activity_very_high_desc">運動員或重體力勞動</string>
+
+    <!-- BMI -->
+    <string name="bmi_underweight">偏輕區間</string>
+    <string name="bmi_underweight_note">你的 BMI 偏低，注意營養攝取，增重或增肌可能更適合你。</string>
+    <string name="bmi_normal">適中區間</string>
+    <string name="bmi_normal_note">你的 BMI 處於適中範圍，適合以溫和節奏調整。</string>
+    <string name="bmi_overweight">偏重區間</string>
+    <string name="bmi_overweight_note">你的 BMI 偏高，建議優先關注減重與飲食結構。</string>
+
+    <!-- Validation errors -->
+    <string name="error_age_range">請輸入 13~100 之間的年齡</string>
+    <string name="error_height">請輸入有效身高</string>
+    <string name="error_weight">請輸入有效體重</string>
+    <string name="error_target_lower">目標體重應小於目前體重</string>
+    <string name="error_target_higher">目標體重應大於目前體重</string>
+    <string name="error_rate_too_fast_lose">這個目標太快，建議放緩，避免影響健康</string>
+    <string name="error_rate_too_fast_gain">增重過快容易囤積脂肪，建議放緩</string>
+    <string name="error_timeline_range">請選擇 1~104 週</string>
+
+    <!-- Welcome -->
+    <string name="welcome_kicker">吃得明白，從一張照片開始</string>
+    <string name="welcome_title">拍張照，\n就知道這頓中餐多少卡。</string>
+    <string name="welcome_sub">專為中餐設計的 AI 辨識，讓每一餐都有數。</string>
+    <string name="welcome_cta">為我制定每日計畫</string>
+    <string name="welcome_legal">約 30 秒 · 無需註冊 · 資料由你掌控</string>
+    <string name="welcome_countdown">%1$ds後進入計畫制定</string>
+
+    <!-- Goal step -->
+    <string name="goal_kicker">01 / 你的方向</string>
+    <string name="goal_title">你希望達成什麼？</string>
+    <string name="goal_sub">先從你想要的改變開始。</string>
+
+    <!-- Basic info -->
+    <string name="basic_kicker">02 / 關於你</string>
+    <string name="basic_title">讓計畫更適合你。</string>
+    <string name="basic_sub">這些資訊只用於估算每日營養目標。</string>
+    <string name="label_sex">生理性別</string>
+    <string name="label_age">你的年齡</string>
+    <string name="unit_years">歲</string>
+    <string name="hint_age_range">年齡範圍 13–100 歲</string>
+
+    <!-- Body data -->
+    <string name="body_kicker">03 / 身體數據</string>
+    <string name="body_title">記錄你的起點。</string>
+    <string name="body_sub">資料僅用於計算身體區間與能量需求。</string>
+    <string name="label_height">身高</string>
+    <string name="label_weight">目前體重</string>
+    <string name="hint_update_profile">你可以隨時在個人中心更新這些資料。</string>
+    <string name="toggle_metric">公制 cm / kg</string>
+    <string name="toggle_imperial">英制 ft·in / lb</string>
+
+    <!-- BMI feedback -->
+    <string name="bmi_kicker">身體區間 · 僅供參考</string>
+    <string name="bmi_title">你的身體，正在自己的節奏裡。</string>
+    <string name="bmi_info">BMI 不區分肌肉與脂肪，僅作為身體區間的參考。我們會綜合其他資訊估算計畫。</string>
+
+    <!-- Target -->
+    <string name="target_kicker">04 / 你的目標</string>
+    <string name="target_title_lose">為改變設定節奏。</string>
+    <string name="target_title_gain">為成長設定節奏。</string>
+    <string name="target_sub">循序漸進，比設定一個過快的期限更重要。</string>
+    <string name="label_target_weight">目標體重</string>
+    <string name="label_timeline">希望在多久內達成？</string>
+    <string name="option_1_month">1 個月</string>
+    <string name="option_3_months">3 個月</string>
+    <string name="option_6_months">6 個月</string>
+    <string name="option_custom">自訂</string>
+    <string name="unit_weeks">週</string>
+
+    <!-- Activity -->
+    <string name="activity_kicker">05 / 日常活動</string>
+    <string name="activity_title">平時的你，動得多嗎？</string>
+    <string name="activity_sub">選擇最接近你大多數日子的狀態。</string>
+    <string name="activity_generate_plan">生成我的計畫</string>
+
+    <!-- Result -->
+    <string name="result_kicker">為你準備的每日計畫</string>
+    <string name="result_title">簡單一點，剛剛好。</string>
+    <string name="result_start_logging">開始記錄飲食</string>
+    <string name="result_kcal_day">kcal / 天</string>
+    <string name="result_daily_energy_target">每日能量目標</string>
+    <string name="result_protein">%1$dg 蛋白質</string>
+    <string name="result_target_date">%1$s 預計達成</string>
+
+    <!-- Breakdown -->
+    <string name="breakdown_title">計畫是怎樣算出來的</string>
+    <string name="breakdown_bmr">基礎代謝 BMR</string>
+    <string name="breakdown_tdee">日常活動消耗 TDEE</string>
+    <string name="breakdown_adjustment">目標調整</string>
+    <string name="breakdown_floor_note">為了不傷基礎代謝，我們設了每日最低下限。你的目標已按安全下限調整——要麼放寬達成時間，要麼增加運動。</string>
+    <string name="privacy_placeholder">隱私與合規內容（預留）</string>
+
+    <!-- Finish -->
+    <string name="finish_kicker">一切準備就緒</string>
+    <string name="finish_title">從下一餐開始，\n更了解自己的選擇。</string>
+    <string name="finish_sub">拍照辨識中餐，記錄你真正吃下的每一餐。</string>
+    <string name="finish_setting_reminder">每日記錄提醒</string>
+    <string name="finish_setting_reminder_sub">按時記錄，更容易看見變化</string>
+    <string name="finish_setting_privacy">你的資料，由你掌控</string>
+    <string name="finish_setting_privacy_sub">了解我們如何保護你的資訊</string>
+    <string name="finish_action_turn_on">開啟</string>
+    <string name="finish_enter">進入 ChopCal</string>
+    <string name="finish_legal">免費版每天 3 次辨識 · 無需註冊即可開始</string>
+
+    <!-- Tabs -->
+    <string name="tab_camera">拍照</string>
+    <string name="tab_history">記錄</string>
+    <string name="tab_profile">我的</string>
+
+    <!-- Skeleton -->
+    <string name="home_tagline">拍一拍，看看吃了多少卡</string>
+    <string name="record_placeholder">飲食記錄、曲線圖和每日計畫將在這裡顯示</string>
+    <string name="profile_placeholder">個人資訊和設定將在這裡顯示</string>
+</resources>

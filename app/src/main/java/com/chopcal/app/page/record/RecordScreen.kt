@@ -14,6 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.chopcal.app.R
 import com.rainbow.compose.ui.theme.CommonTheme
 
 /**
@@ -31,14 +33,14 @@ fun RecordScreen() {
     ) {
         Spacer(Modifier.height(56.dp))
         Text(
-            text = "记录",
+            text = stringResource(R.string.tab_history),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground,
         )
         Spacer(Modifier.height(16.dp))
         Text(
-            text = "饮食记录、曲线图和每日计划将在这里展示",
+            text = stringResource(R.string.record_placeholder),
             fontSize = 14.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

@@ -20,35 +20,38 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
+import com.chopcal.app.R
+import com.chopcal.app.core.design.theme.ChopCalTheme
 import com.chopcal.app.page.home.HomeScreen
 import com.chopcal.app.page.profile.ProfileScreen
 import com.chopcal.app.page.record.RecordScreen
-import com.rainbow.compose.ui.BaseCommonComposeActivity
+import com.rainbow.compose.core.base.BaseComposeActivity
 
 /**
- * ChopCal 主入口 Activity，承载底部三 Tab。
+ * ChopCal 主页 Activity，承载底部三 Tab（预埋）。
  */
-class MainActivity : BaseCommonComposeActivity() {
+class MainActivity : BaseComposeActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
-
-    @Composable
-    override fun screen() {
-        MainScreen()
+        setComposeContent {
+            ChopCalTheme {
+                MainScreen()
+            }
+        }
     }
 }
 
 private data class TabItem(
-    val title: String,
+    val titleRes: Int,
     val icon: ImageVector,
 )
 
 private val tabs = listOf(
-    TabItem("拍照", Icons.Filled.PhotoCamera),
-    TabItem("记录", Icons.AutoMirrored.Filled.List),
-    TabItem("我的", Icons.Filled.Person),
+    TabItem(R.string.tab_camera, Icons.Filled.PhotoCamera),
+    TabItem(R.string.tab_history, Icons.AutoMirrored.Filled.List),
+    TabItem(R.string.tab_profile, Icons.Filled.Person),
 )
 
 @Composable
@@ -63,8 +66,8 @@ private fun MainScreen() {
                     NavigationBarItem(
                         selected = selectedTab == index,
                         onClick = { selectedTab = index },
-                        icon = { Icon(tab.icon, contentDescription = tab.title) },
-                        label = { Text(tab.title) },
+                        icon = { Icon(tab.icon, contentDescription = stringResource(tab.titleRes)) },
+                        label = { Text(stringResource(tab.titleRes)) },
                     )
                 }
             }

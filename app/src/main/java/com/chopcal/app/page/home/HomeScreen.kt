@@ -22,6 +22,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.chopcal.app.R
 import com.rainbow.compose.ui.theme.CommonTheme
 
 /**
@@ -73,7 +75,7 @@ fun HomeScreen() {
 
         Spacer(Modifier.height(20.dp))
         Text(
-            text = "拍一拍，看看吃了多少卡",
+            text = stringResource(R.string.home_tagline),
             fontSize = 16.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
