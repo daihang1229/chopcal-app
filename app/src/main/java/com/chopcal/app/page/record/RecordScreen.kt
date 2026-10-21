@@ -5,33 +5,40 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.res.stringResource
 import com.chopcal.app.R
 import com.rainbow.compose.ui.theme.CommonTheme
 
 /**
- * Tab 2：记录（记录列表 + 曲线图 + 计划）。
- *
- * 当前为骨架版本：占位。
+ * 记录二级页：记录列表 + 曲线图 + 摄入计划（P1，当前为骨架）。
  */
 @Composable
-fun RecordScreen() {
+fun RecordScreen(onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .statusBarsPadding()
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(Modifier.height(56.dp))
+        IconButton(onClick = onBack, modifier = Modifier.align(Alignment.Start)) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "back")
+        }
+        Spacer(Modifier.height(24.dp))
         Text(
             text = stringResource(R.string.tab_history),
             fontSize = 24.sp,
@@ -51,6 +58,6 @@ fun RecordScreen() {
 @Composable
 private fun RecordScreenPreview() {
     CommonTheme(darkTheme = false) {
-        RecordScreen()
+        RecordScreen(onBack = {})
     }
 }

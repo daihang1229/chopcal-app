@@ -151,4 +151,67 @@
     <string name="home_tagline">拍一拍，看看吃了多少卡</string>
     <string name="record_placeholder">飲食記錄、曲線圖和每日計畫將在這裡顯示</string>
     <string name="profile_placeholder">個人資訊和設定將在這裡顯示</string>
+
+    <!-- Meal types -->
+    <string name="meal_breakfast">早餐</string>
+    <string name="meal_lunch">午餐</string>
+    <string name="meal_snack">加餐</string>
+    <string name="meal_dinner">晚餐</string>
+
+    <!-- Portion & method -->
+    <string name="portion_small">小份</string>
+    <string name="portion_medium">中份</string>
+    <string name="portion_large">大份</string>
+    <string name="method_less_oil">少油</string>
+    <string name="method_normal">正常</string>
+    <string name="method_fried">油炸</string>
+
+    <!-- Common -->
+    <string name="common_confirm">確定</string>
+
+    <!-- Home -->
+    <string name="home_today">今天</string>
+    <string name="home_greeting_title">今天，吃得剛剛好</string>
+    <string name="home_greeting_sub">每一餐都算數，慢慢靠近你的目標</string>
+    <string name="home_daily_intake">每日攝取</string>
+    <string name="home_nutrition">營養攝取</string>
+    <string name="home_today_target">今日 / 目標</string>
+    <string name="home_meals">今日餐次</string>
+    <string name="home_view_records">查看記錄</string>
+    <string name="home_not_recorded">未記錄</string>
+    <string name="home_water">飲水</string>
+    <string name="home_water_unit">ml</string>
+    <string name="home_step">步數</string>
+    <string name="home_step_unit">步</string>
+    <string name="home_capture_fab">拍照記錄</string>
+    <string name="home_protein">蛋白質</string>
+    <string name="home_carbs">碳水</string>
+    <string name="home_fat">脂肪</string>
+    <string name="home_ring_lose">還差 %1$d kcal · 今天還可以吃 %1$d</string>
+    <string name="home_ring_maintain">還差 %1$d kcal · 接近今日目標</string>
+    <string name="home_ring_gain">還差 %1$d kcal · 今天還要多吃 %1$d</string>
+
+    <!-- Capture sheet -->
+    <string name="capture_title">記錄這一餐</string>
+    <string name="capture_query_only">僅辨識</string>
+    <string name="input_camera">拍照</string>
+    <string name="input_album">相簿</string>
+    <string name="input_barcode">掃碼</string>
+    <string name="input_text_voice">文字或語音</string>
+    <string name="phase_two">（二期）</string>
+    <string name="recognizing_text">正在辨識這頓中餐…</string>
+    <string name="candidates_title">這是哪道菜？</string>
+    <string name="not_this_dish">都不是</string>
+    <string name="label_portion">份量</string>
+    <string name="label_method">做法</string>
+    <string name="label_servings">份數</string>
+    <string name="capture_compute">計算熱量</string>
+    <string name="result_title_home">估算熱量</string>
+    <string name="result_ingredients">食材明細</string>
+    <string name="result_save">儲存到餐次</string>
+    <string name="result_got_it">知道了</string>
+
+    <!-- Pro -->
+    <string name="pro_title">ChopCal Pro</string>
+    <string name="pro_placeholder">訂閱方案將在這裡顯示</string>
 </resources>

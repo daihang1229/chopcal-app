@@ -52,6 +52,7 @@ fun ChopCalTheme(
     content: @Composable () -> Unit,
 ) {
     val colors = if (darkTheme) DarkChopCalColors else LightChopCalColors
+    SystemBarsAppearance(darkTheme)
     CompositionLocalProvider(LocalChopCalColors provides colors) {
         MaterialTheme(
             colorScheme = if (darkTheme) ChopCalDarkColorScheme else ChopCalLightColorScheme,

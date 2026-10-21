@@ -1,0 +1,31 @@
+# ── Gradle 构建产物 ──────────────────────────────
+.gradle/
+build/
+**/build/
+
+# ── 本地 / 敏感配置（不应提交） ──────────────────
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# ── IDE ─────────────────────────────────────────
+.idea/
+*.iml
+
+# ── 打包产物 ─────────────────────────────────────
+*.apk
+*.aab
+*.apks
+captures/
+output-metadata.json
+app/release/
+
+# ── 原生构建 ─────────────────────────────────────
+.externalNativeBuild/
+.cxx/
+.cxx/
+
+# ── 系统 / 其他 ──────────────────────────────────
+.DS_Store
+*.log

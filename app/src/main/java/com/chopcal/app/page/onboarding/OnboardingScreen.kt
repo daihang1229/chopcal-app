@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
@@ -96,7 +97,7 @@ fun OnboardingScreen(
     // 跳过确认弹窗
     var showSkipDialog by remember { mutableStateOf(false) }
 
-    Column(Modifier.fillMaxSize().background(chopCalColors.paper)) {
+    Column(Modifier.fillMaxSize().background(chopCalColors.paper).systemBarsPadding()) {
         OnboardingTopBar(
             actionLabel = topActionLabel(currentStep)?.let { stringResource(it) },
             onAction = {

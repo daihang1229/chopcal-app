@@ -151,4 +151,67 @@
     <string name="home_tagline">Snap a photo to see your meal\'s calories</string>
     <string name="record_placeholder">Meal history, charts, and your daily plan will appear here</string>
     <string name="profile_placeholder">Personal info and settings will appear here</string>
+
+    <!-- Meal types -->
+    <string name="meal_breakfast">Breakfast</string>
+    <string name="meal_lunch">Lunch</string>
+    <string name="meal_snack">Snack</string>
+    <string name="meal_dinner">Dinner</string>
+
+    <!-- Portion & method -->
+    <string name="portion_small">Small</string>
+    <string name="portion_medium">Medium</string>
+    <string name="portion_large">Large</string>
+    <string name="method_less_oil">Less oil</string>
+    <string name="method_normal">Normal</string>
+    <string name="method_fried">Fried</string>
+
+    <!-- Common -->
+    <string name="common_confirm">OK</string>
+
+    <!-- Home -->
+    <string name="home_today">Today</string>
+    <string name="home_greeting_title">You\'re eating just right today</string>
+    <string name="home_greeting_sub">Every meal counts, slowly moving toward your goal</string>
+    <string name="home_daily_intake">DAILY INTAKE</string>
+    <string name="home_nutrition">Nutrition</string>
+    <string name="home_today_target">Today / target</string>
+    <string name="home_meals">Today\'s meals</string>
+    <string name="home_view_records">View records</string>
+    <string name="home_not_recorded">Not logged</string>
+    <string name="home_water">Water</string>
+    <string name="home_water_unit">ml</string>
+    <string name="home_step">Steps</string>
+    <string name="home_step_unit">steps</string>
+    <string name="home_capture_fab">Log meal</string>
+    <string name="home_protein">Protein</string>
+    <string name="home_carbs">Carbs</string>
+    <string name="home_fat">Fat</string>
+    <string name="home_ring_lose">Remaining %1$d kcal · %1$d kcal left today</string>
+    <string name="home_ring_maintain">Remaining %1$d kcal · close to your goal</string>
+    <string name="home_ring_gain">Remaining %1$d kcal · eat %1$d kcal more today</string>
+
+    <!-- Capture sheet -->
+    <string name="capture_title">Log this meal</string>
+    <string name="capture_query_only">Identify only</string>
+    <string name="input_camera">Camera</string>
+    <string name="input_album">Album</string>
+    <string name="input_barcode">Scan</string>
+    <string name="input_text_voice">Text or voice</string>
+    <string name="phase_two">(Soon)</string>
+    <string name="recognizing_text">Recognizing this meal…</string>
+    <string name="candidates_title">Which dish is this?</string>
+    <string name="not_this_dish">None of these</string>
+    <string name="label_portion">Portion</string>
+    <string name="label_method">Cooking method</string>
+    <string name="label_servings">Servings</string>
+    <string name="capture_compute">Calculate</string>
+    <string name="result_title_home">Estimated calories</string>
+    <string name="result_ingredients">Ingredients</string>
+    <string name="result_save">Save to meal</string>
+    <string name="result_got_it">Got it</string>
+
+    <!-- Pro -->
+    <string name="pro_title">ChopCal Pro</string>
+    <string name="pro_placeholder">Subscription plans will appear here</string>
 </resources>

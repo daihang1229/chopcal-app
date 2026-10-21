@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.compose.ui.graphics)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons.extended)
     debugImplementation(libs.compose.ui.tooling)
 
     // 依赖注入
@@ -85,6 +86,11 @@ dependencies {
     // 本地存储 + 序列化
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.kotlinx.serialization.json)
+
+    // Room 数据库（饮食记录）
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     // Firebase
     implementation(platform(libs.firebase.bom))
