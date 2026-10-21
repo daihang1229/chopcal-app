@@ -15,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.stringResource
+import com.chopcal.app.BuildConfig
 import com.chopcal.app.R
 import com.rainbow.compose.ui.theme.CommonTheme
 
@@ -79,6 +81,14 @@ fun HomeScreen() {
             fontSize = 16.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+
+        // 仅 DEBUG 构建可见：崩溃测试入口（验证 Crashlytics 用）
+        if (BuildConfig.DEBUG) {
+            Spacer(Modifier.height(16.dp))
+            TextButton(onClick = { throw RuntimeException("ChopCal test crash") }) {
+                Text("Test crash")
+            }
+        }
 
         Spacer(Modifier.weight(1f))
     }

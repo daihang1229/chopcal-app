@@ -36,7 +36,7 @@ import com.rainbow.compose.core.base.BaseComposeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-private const val EXIT_DOUBLE_PRESS_INTERVAL_MS = 300L
+private const val EXIT_DOUBLE_PRESS_INTERVAL_MS = 2000L
 
 /**
  * ChopCal 主页 Activity，承载底部三 Tab（预埋）。
