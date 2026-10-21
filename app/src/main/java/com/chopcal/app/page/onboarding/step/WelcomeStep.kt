@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding.step
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,9 +25,6 @@ import androidx.compose.ui.unit.sp
 import com.chopcal.app.R
 import com.chopcal.app.core.design.component.KickerText
 import com.chopcal.app.core.design.component.PrimaryButton
-import com.chopcal.app.core.design.theme.Ink
-import com.chopcal.app.core.design.theme.InkMuted
-import com.chopcal.app.core.design.theme.Lime
 import com.chopcal.app.core.design.theme.TitleStyle
 import com.chopcal.app.page.onboarding.OnboardingIntent
 import com.chopcal.app.page.onboarding.OnboardingUiState
@@ -54,7 +52,7 @@ fun WelcomeStep(
                     .align(Alignment.Center)
                     .fillMaxWidth(0.66f)
                     .height(200.dp)
-                    .border(1.dp, Lime, RoundedCornerShape(18.dp)),
+                    .border(1.dp, chopCalColors.lime, RoundedCornerShape(18.dp)),
             )
             Text(
                 text = "AI FOOD SCAN · CHINESE CUISINE",
@@ -70,13 +68,13 @@ fun WelcomeStep(
         Text(
             text = stringResource(R.string.welcome_title),
             style = TitleStyle.copy(fontSize = 31.sp),
-            color = Ink,
+            color = chopCalColors.ink,
         )
         Spacer(Modifier.height(10.dp))
         Text(
             text = stringResource(R.string.welcome_sub),
             fontSize = 13.sp,
-            color = InkMuted,
+            color = chopCalColors.inkMuted,
         )
         Spacer(Modifier.height(24.dp))
         PrimaryButton(
@@ -88,7 +86,7 @@ fun WelcomeStep(
         Text(
             text = stringResource(R.string.welcome_countdown, countdownSeconds),
             fontSize = 12.sp,
-            color = InkMuted,
+            color = chopCalColors.inkMuted,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
         )
@@ -96,7 +94,7 @@ fun WelcomeStep(
         Text(
             text = stringResource(R.string.welcome_legal),
             fontSize = 9.sp,
-            color = InkMuted,
+            color = chopCalColors.inkMuted,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
         )

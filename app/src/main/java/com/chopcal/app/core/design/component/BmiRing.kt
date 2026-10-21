@@ -1,4 +1,5 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -15,11 +16,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chopcal.app.R
-import com.chopcal.app.core.design.theme.BmiBlue
-import com.chopcal.app.core.design.theme.BmiGreen
-import com.chopcal.app.core.design.theme.BmiOrange
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.Ink
 import com.chopcal.app.domain.model.BmiBand
 import java.util.Locale
 
@@ -33,9 +29,9 @@ fun BmiRing(
     modifier: Modifier = Modifier,
 ) {
     val ringColor = when (band) {
-        BmiBand.UNDERWEIGHT -> BmiBlue
-        BmiBand.NORMAL -> BmiGreen
-        BmiBand.OVERWEIGHT -> BmiOrange
+        BmiBand.UNDERWEIGHT -> chopCalColors.bmiBlue
+        BmiBand.NORMAL -> chopCalColors.bmiGreen
+        BmiBand.OVERWEIGHT -> chopCalColors.bmiOrange
     }
     Box(
         modifier = modifier
@@ -49,13 +45,13 @@ fun BmiRing(
                 fontSize = 52.sp,
                 letterSpacing = (-3.6).sp,
                 fontWeight = FontWeight.Medium,
-                color = Ink,
+                color = chopCalColors.ink,
             )
             Text(
                 text = "● ${stringResource(band.labelRes)}",
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = ForestGreen,
+                color = chopCalColors.forestGreen,
             )
         }
     }

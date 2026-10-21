@@ -1,6 +1,7 @@
 package com.rainbow.compose.core.log
 
 import android.util.Log
+import com.rainbow.compose.core.BuildConfig
 
 /**
  * 框架统一的日志入口。
@@ -25,7 +26,7 @@ object ComposeLog {
     private fun log(priority: Int, message: String) = log(TAG, priority, message)
 
     private fun log(tag: String, priority: Int, message: String) {
-        if (!enabled) return
+        if (!BuildConfig.DEBUG) return
         Log.println(priority, tag, message)
     }
 }

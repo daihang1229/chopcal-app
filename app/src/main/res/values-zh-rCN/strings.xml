@@ -8,6 +8,7 @@
     <string name="common_skip">跳过</string>
     <string name="skip_for_now">跳过，先体验</string>
     <string name="common_cancel">取消</string>
+    <string name="exit_hint">再按一次退出</string>
     <string name="skip_dialog_title">跳过填写？</string>
     <string name="skip_dialog_message">我们将以默认数据为你记录和规划，之后可随时在个人中心修改。</string>
 

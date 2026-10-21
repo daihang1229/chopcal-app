@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import com.chopcal.app.domain.model.DailyTarget
 import com.chopcal.app.domain.model.DeviceInfo
 import com.chopcal.app.domain.model.NicknameGenerator
+import com.chopcal.app.domain.model.ThemeMode
 import com.chopcal.app.domain.model.UserProfile
 import com.chopcal.app.domain.repository.UserProfileRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -32,6 +33,7 @@ class UserProfileRepositoryImpl @Inject constructor(
         val PROFILE = stringPreferencesKey("user_profile")
         val DAILY_TARGET = stringPreferencesKey("daily_target")
         val DEVICE = stringPreferencesKey("device")
+        val THEME_MODE = stringPreferencesKey("theme_mode")
     }
 
     override val profile: Flow<UserProfile?> = dataStore.data.map { p ->
@@ -47,12 +49,22 @@ class UserProfileRepositoryImpl @Inject constructor(
         p[Keys.DAILY_TARGET]?.let { raw -> runCatching { json.decodeFromString<DailyTarget>(raw) }.getOrNull() }
     }
 
+    override val themeMode: Flow<ThemeMode> = dataStore.data.map { p ->
+        p[Keys.THEME_MODE]
+            ?.let { raw -> runCatching { ThemeMode.valueOf(raw) }.getOrNull() }
+            ?: ThemeMode.SYSTEM
+    }
+
     override suspend fun saveProfile(profile: UserProfile) {
         dataStore.edit { it[Keys.PROFILE] = json.encodeToString(profile) }
     }
 
     override suspend fun saveDailyTarget(target: DailyTarget) {
         dataStore.edit { it[Keys.DAILY_TARGET] = json.encodeToString(target) }
+    }
+
+    override suspend fun saveThemeMode(mode: ThemeMode) {
+        dataStore.edit { it[Keys.THEME_MODE] = mode.name }
     }
 
     override suspend fun markOnboarded() {

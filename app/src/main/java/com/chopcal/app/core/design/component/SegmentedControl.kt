@@ -1,4 +1,5 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -16,12 +17,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chopcal.app.core.design.theme.CardWhite
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.InkMuted
-import com.chopcal.app.core.design.theme.Line
-import com.chopcal.app.core.design.theme.SurfaceMint
-
 /**
  * 分段选择（性别三选一）。
  */
@@ -39,8 +34,8 @@ fun SegmentedControl(
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = if (index == 0) 0.dp else 4.dp)
-                    .background(if (on) SurfaceMint else CardWhite, RoundedCornerShape(12.dp))
-                    .border(1.dp, if (on) ForestGreen else Line, RoundedCornerShape(12.dp))
+                    .background(if (on) chopCalColors.surfaceMint else chopCalColors.card, RoundedCornerShape(12.dp))
+                    .border(1.dp, if (on) chopCalColors.forestGreen else chopCalColors.line, RoundedCornerShape(12.dp))
                     .clickable { onSelect(index) }
                     .padding(vertical = 13.dp),
                 contentAlignment = Alignment.Center,
@@ -49,7 +44,7 @@ fun SegmentedControl(
                     text = option,
                     fontSize = 13.sp,
                     fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,
-                    color = if (on) ForestGreen else InkMuted,
+                    color = if (on) chopCalColors.forestGreen else chopCalColors.inkMuted,
                     textAlign = TextAlign.Center,
                 )
             }

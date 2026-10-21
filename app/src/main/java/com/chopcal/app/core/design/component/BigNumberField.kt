@@ -1,4 +1,5 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,13 +22,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chopcal.app.core.design.theme.BigNumberStyle
-import com.chopcal.app.core.design.theme.CardWhite
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.Ink
-import com.chopcal.app.core.design.theme.InkFaint
-import com.chopcal.app.core.design.theme.Line
-import com.chopcal.app.core.design.theme.WarningOrange
-
 /**
  * 大号数字输入框（可见输入框样式：白底 + 边框 + 圆角）。
  */
@@ -46,8 +40,8 @@ fun BigNumberField(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .background(CardWhite, RoundedCornerShape(14.dp))
-                .border(1.dp, if (error != null) WarningOrange else Line, RoundedCornerShape(14.dp))
+                .background(chopCalColors.card, RoundedCornerShape(14.dp))
+                .border(1.dp, if (error != null) chopCalColors.warning else chopCalColors.line, RoundedCornerShape(14.dp))
                 .padding(horizontal = 16.dp, vertical = 14.dp),
         ) {
             Box(modifier = Modifier.weight(1f)) {
@@ -55,15 +49,15 @@ fun BigNumberField(
                     Text(
                         text = placeholder,
                         style = BigNumberStyle,
-                        color = InkFaint,
+                        color = chopCalColors.inkFaint,
                     )
                 }
                 BasicTextField(
                     value = value,
                     onValueChange = onValueChange,
-                    textStyle = BigNumberStyle.copy(color = Ink, textAlign = TextAlign.Start),
+                    textStyle = BigNumberStyle.copy(color = chopCalColors.ink, textAlign = TextAlign.Start),
                     singleLine = true,
-                    cursorBrush = SolidColor(ForestGreen),
+                    cursorBrush = SolidColor(chopCalColors.forestGreen),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = if (decimal) KeyboardType.Decimal else KeyboardType.Number,
                     ),
@@ -72,7 +66,7 @@ fun BigNumberField(
             Text(
                 text = unit,
                 fontSize = 13.sp,
-                color = InkFaint,
+                color = chopCalColors.inkFaint,
                 modifier = Modifier.padding(start = 8.dp),
             )
         }
@@ -80,7 +74,7 @@ fun BigNumberField(
             Text(
                 text = stringResource(error),
                 fontSize = 11.sp,
-                color = WarningOrange,
+                color = chopCalColors.warning,
                 modifier = Modifier.padding(top = 6.dp),
             )
         }

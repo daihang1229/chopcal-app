@@ -8,6 +8,7 @@
     <string name="common_skip">Skip</string>
     <string name="skip_for_now">Skip for now</string>
     <string name="common_cancel">Cancel</string>
+    <string name="exit_hint">Press again to exit</string>
     <string name="skip_dialog_title">Skip setup?</string>
     <string name="skip_dialog_message">We\'ll use default data to plan and log your meals. You can update it anytime in your profile.</string>
 

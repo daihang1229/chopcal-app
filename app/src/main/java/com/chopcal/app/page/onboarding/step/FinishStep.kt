@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding.step
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,10 +26,6 @@ import androidx.compose.ui.unit.sp
 import com.chopcal.app.R
 import com.chopcal.app.core.design.component.KickerText
 import com.chopcal.app.core.design.component.StepActions
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.Ink
-import com.chopcal.app.core.design.theme.InkMuted
-import com.chopcal.app.core.design.theme.Lime
 import com.chopcal.app.core.design.theme.TitleStyle
 import com.chopcal.app.page.onboarding.OnboardingIntent
 import com.chopcal.app.page.onboarding.OnboardingUiState
@@ -51,14 +48,14 @@ fun FinishStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
             Text(
                 text = stringResource(R.string.finish_title),
                 style = TitleStyle,
-                color = Ink,
+                color = chopCalColors.ink,
                 textAlign = TextAlign.Center,
             )
             Spacer(Modifier.height(9.dp))
             Text(
                 text = stringResource(R.string.finish_sub),
                 fontSize = 13.sp,
-                color = InkMuted,
+                color = chopCalColors.inkMuted,
                 textAlign = TextAlign.Center,
             )
             Spacer(Modifier.height(22.dp))
@@ -85,7 +82,7 @@ fun FinishStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
         Text(
             text = stringResource(R.string.finish_legal),
             fontSize = 9.sp,
-            color = InkMuted,
+            color = chopCalColors.inkMuted,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
         )
@@ -99,15 +96,15 @@ private fun FinishVisual() {
         Box(
             modifier = Modifier
                 .size(160.dp)
-                .border(1.dp, ForestGreen.copy(alpha = 0.3f), androidx.compose.foundation.shape.CircleShape),
+                .border(1.dp, chopCalColors.forestGreen.copy(alpha = 0.3f), androidx.compose.foundation.shape.CircleShape),
         )
         Box(
             modifier = Modifier
                 .size(76.dp)
-                .background(ForestGreen, RoundedCornerShape(25.dp)),
+                .background(chopCalColors.forestGreen, RoundedCornerShape(25.dp)),
             contentAlignment = Alignment.Center,
         ) {
-            Text(text = "✓", fontSize = 33.sp, color = Lime)
+            Text(text = "✓", fontSize = 33.sp, color = chopCalColors.lime)
         }
     }
 }
@@ -128,15 +125,15 @@ private fun SettingRow(
         Box(
             modifier = Modifier
                 .size(33.dp)
-                .background(ForestGreen.copy(alpha = 0.08f), RoundedCornerShape(11.dp)),
+                .background(chopCalColors.forestGreen.copy(alpha = 0.08f), RoundedCornerShape(11.dp)),
             contentAlignment = Alignment.Center,
         ) {
-            Text(text = icon, fontSize = 14.sp, color = ForestGreen)
+            Text(text = icon, fontSize = 14.sp, color = chopCalColors.forestGreen)
         }
         Column(modifier = Modifier.padding(start = 12.dp).weight(1f)) {
-            Text(text = title, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = Ink)
-            Text(text = sub, fontSize = 10.sp, color = InkMuted, modifier = Modifier.padding(top = 3.dp))
+            Text(text = title, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = chopCalColors.ink)
+            Text(text = sub, fontSize = 10.sp, color = chopCalColors.inkMuted, modifier = Modifier.padding(top = 3.dp))
         }
-        Text(text = action, fontSize = 10.sp, color = ForestGreen)
+        Text(text = action, fontSize = 10.sp, color = chopCalColors.forestGreen)
     }
 }

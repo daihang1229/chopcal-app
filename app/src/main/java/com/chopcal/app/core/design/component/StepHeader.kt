@@ -1,4 +1,5 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,8 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chopcal.app.core.design.theme.Ink
-import com.chopcal.app.core.design.theme.InkMuted
 import com.chopcal.app.core.design.theme.TitleStyle
 
 /**
@@ -27,10 +26,10 @@ fun StepHeader(
             KickerText(text = kicker)
             Spacer(Modifier.height(10.dp))
         }
-        Text(text = title, style = TitleStyle, color = Ink)
+        Text(text = title, style = TitleStyle, color = chopCalColors.ink)
         if (sub != null) {
             Spacer(Modifier.height(9.dp))
-            Text(text = sub, fontSize = 13.sp, lineHeight = 21.sp, color = InkMuted)
+            Text(text = sub, fontSize = 13.sp, lineHeight = 21.sp, color = chopCalColors.inkMuted)
         }
     }
 }

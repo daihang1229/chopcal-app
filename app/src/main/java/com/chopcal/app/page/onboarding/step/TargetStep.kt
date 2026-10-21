@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding.step
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,11 +28,6 @@ import com.chopcal.app.core.design.component.BigNumberField
 import com.chopcal.app.core.design.component.FieldLabel
 import com.chopcal.app.core.design.component.StepActions
 import com.chopcal.app.core.design.component.StepHeader
-import com.chopcal.app.core.design.theme.CardWhite
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.InkMuted
-import com.chopcal.app.core.design.theme.Line
-import com.chopcal.app.core.design.theme.SurfaceMint
 import com.chopcal.app.domain.model.GoalType
 import com.chopcal.app.domain.model.WeightUnit
 import com.chopcal.app.page.onboarding.FieldId
@@ -114,12 +110,12 @@ private fun RowScope.TimelineOption(label: String, selected: Boolean, onClick: (
         text = label,
         fontSize = 11.sp,
         fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-        color = if (selected) ForestGreen else InkMuted,
+        color = if (selected) chopCalColors.forestGreen else chopCalColors.inkMuted,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .weight(1f)
-            .background(if (selected) SurfaceMint else CardWhite, RoundedCornerShape(10.dp))
-            .border(1.dp, if (selected) ForestGreen else Line, RoundedCornerShape(10.dp))
+            .background(if (selected) chopCalColors.surfaceMint else chopCalColors.card, RoundedCornerShape(10.dp))
+            .border(1.dp, if (selected) chopCalColors.forestGreen else chopCalColors.line, RoundedCornerShape(10.dp))
             .clickable(onClick = onClick)
             .padding(vertical = 11.dp),
     )

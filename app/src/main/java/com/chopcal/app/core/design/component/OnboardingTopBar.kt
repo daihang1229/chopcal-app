@@ -1,4 +1,5 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,11 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.Ink
-import com.chopcal.app.core.design.theme.InkMuted
-import com.chopcal.app.core.design.theme.Lime
-
 /**
  * 顶部栏：品牌 + 右上角动作（跳过/返回，可为 null 表示隐藏）。
  */
@@ -41,16 +37,16 @@ fun OnboardingTopBar(
         Box(
             modifier = Modifier
                 .size(23.dp)
-                .background(ForestGreen, RoundedCornerShape(8.dp)),
+                .background(chopCalColors.forestGreen, RoundedCornerShape(8.dp)),
             contentAlignment = Alignment.Center,
         ) {
-            Text(text = "✳", fontSize = 14.sp, color = Lime)
+            Text(text = "✳", fontSize = 14.sp, color = chopCalColors.lime)
         }
         Text(
             text = "chopcal",
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
-            color = Ink,
+            color = chopCalColors.ink,
             modifier = Modifier.padding(start = 8.dp),
         )
         Spacer(modifier = Modifier.weight(1f))
@@ -59,7 +55,7 @@ fun OnboardingTopBar(
             Text(
                 text = actionLabel,
                 fontSize = 12.sp,
-                color = InkMuted,
+                color = chopCalColors.inkMuted,
                 modifier = Modifier
                     .clickable(
                         interactionSource = interactionSource,

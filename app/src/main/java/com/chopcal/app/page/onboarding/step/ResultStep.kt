@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding.step
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,12 +20,11 @@ import com.chopcal.app.core.design.component.PlanBreakdown
 import com.chopcal.app.core.design.component.ResultHeroCard
 import com.chopcal.app.core.design.component.StepActions
 import com.chopcal.app.core.design.component.StepHeader
-import com.chopcal.app.core.design.theme.InkFaint
 import com.chopcal.app.page.onboarding.OnboardingIntent
 import com.chopcal.app.page.onboarding.OnboardingUiState
 
 /**
- * Item 7：你的计划（结果页）。拆解默认展开，底部预留隐私合规位。
+ * Item 7：你的计划（结果页）。拆解默认展开，底部（按钮下方）预留隐私合规位。
  */
 @Composable
 fun ResultStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
@@ -44,19 +44,19 @@ fun ResultStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
                 Spacer(Modifier.height(18.dp))
                 PlanBreakdown(target = target)
             }
-            Spacer(Modifier.height(18.dp))
-            Text(
-                text = stringResource(R.string.privacy_placeholder),
-                fontSize = 10.sp,
-                color = InkFaint,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth(),
-            )
         }
         StepActions(
             primaryText = stringResource(R.string.result_start_logging),
             onPrimary = { onIntent(OnboardingIntent.Next) },
             trailingArrow = true,
+        )
+        Spacer(Modifier.height(16.dp))
+        Text(
+            text = stringResource(R.string.privacy_placeholder),
+            fontSize = 10.sp,
+            color = chopCalColors.inkFaint,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
         )
         Spacer(Modifier.height(20.dp))
     }

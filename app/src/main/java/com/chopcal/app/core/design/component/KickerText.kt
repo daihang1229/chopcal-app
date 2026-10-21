@@ -1,12 +1,11 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
-import com.chopcal.app.core.design.theme.InkMuted
-
 /**
  * 大写小标（kicker），如「01 / 你的方向」。
  */
@@ -24,6 +23,6 @@ fun KickerText(
         text = text,
         modifier = modifier,
         style = style,
-        color = InkMuted,
+        color = chopCalColors.inkMuted,
     )
 }

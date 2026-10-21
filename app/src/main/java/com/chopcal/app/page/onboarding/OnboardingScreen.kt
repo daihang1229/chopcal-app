@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -19,9 +20,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chopcal.app.R
 import com.chopcal.app.core.design.component.ChopConfirmDialog
+import com.chopcal.app.core.design.component.ChopLoadingIndicator
 import com.chopcal.app.core.design.component.OnboardingProgressBar
 import com.chopcal.app.core.design.component.OnboardingTopBar
-import com.chopcal.app.core.design.theme.Paper
 import com.chopcal.app.page.onboarding.step.ActivityStep
 import com.chopcal.app.page.onboarding.step.BasicInfoStep
 import com.chopcal.app.page.onboarding.step.BmiFeedbackStep
@@ -56,7 +57,9 @@ fun OnboardingScreen(
     }
 
     if (!state.initialized) {
-        Box(Modifier.fillMaxSize().background(Paper))
+        Box(Modifier.fillMaxSize().background(chopCalColors.paper)) {
+            ChopLoadingIndicator()
+        }
         return
     }
 
@@ -93,7 +96,7 @@ fun OnboardingScreen(
     // 跳过确认弹窗
     var showSkipDialog by remember { mutableStateOf(false) }
 
-    Column(Modifier.fillMaxSize().background(Paper)) {
+    Column(Modifier.fillMaxSize().background(chopCalColors.paper)) {
         OnboardingTopBar(
             actionLabel = topActionLabel(currentStep)?.let { stringResource(it) },
             onAction = {

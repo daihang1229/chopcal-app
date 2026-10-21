@@ -1,4 +1,5 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,8 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chopcal.app.R
 import com.chopcal.app.core.design.theme.DisplayNumberStyle
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.InkOnGreen
 import com.chopcal.app.domain.model.DailyTarget
 import java.time.LocalDate
 import java.util.Locale
@@ -37,7 +36,7 @@ fun ResultHeroCard(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(ForestGreen, RoundedCornerShape(21.dp))
+            .background(chopCalColors.forestGreen, RoundedCornerShape(21.dp))
             .padding(vertical = 23.dp, horizontal = 15.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -50,7 +49,7 @@ fun ResultHeroCard(
         Text(
             text = target.dailyKcal.toString(),
             style = DisplayNumberStyle,
-            color = InkOnGreen,
+            color = chopCalColors.inkOnGreen,
         )
         Text(
             text = stringResource(R.string.result_kcal_day),

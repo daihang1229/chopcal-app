@@ -1,4 +1,5 @@
 package com.chopcal.app.core.design.component
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -17,10 +18,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chopcal.app.R
-import com.chopcal.app.core.design.theme.CardWhite
-import com.chopcal.app.core.design.theme.Ink
-import com.chopcal.app.core.design.theme.InkMuted
-import com.chopcal.app.core.design.theme.Line
 import com.chopcal.app.domain.model.DailyTarget
 
 /**
@@ -35,15 +32,15 @@ fun PlanBreakdown(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .border(1.dp, Line, RoundedCornerShape(15.dp))
-                .background(CardWhite, RoundedCornerShape(15.dp))
+                .border(1.dp, chopCalColors.line, RoundedCornerShape(15.dp))
+                .background(chopCalColors.card, RoundedCornerShape(15.dp))
                 .padding(14.dp),
         ) {
             Text(
                 text = stringResource(R.string.breakdown_title),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = Ink,
+                color = chopCalColors.ink,
             )
             Column(modifier = Modifier.padding(top = 4.dp)) {
                 BreakdownLine(stringResource(R.string.breakdown_bmr), "${target.bmr} kcal")
@@ -69,9 +66,9 @@ fun PlanBreakdown(
 @Composable
 private fun BreakdownLine(label: String, value: String) {
     Row(modifier = Modifier.fillMaxWidth().padding(vertical = 7.dp)) {
-        Text(text = label, fontSize = 11.sp, color = InkMuted)
+        Text(text = label, fontSize = 11.sp, color = chopCalColors.inkMuted)
         Spacer(modifier = Modifier.weight(1f))
-        Text(text = value, fontSize = 11.sp, color = Ink, fontWeight = FontWeight.Medium)
+        Text(text = value, fontSize = 11.sp, color = chopCalColors.ink, fontWeight = FontWeight.Medium)
     }
 }
 

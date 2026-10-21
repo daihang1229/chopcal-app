@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding.step
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,8 +24,6 @@ import com.chopcal.app.core.design.component.BigNumberField
 import com.chopcal.app.core.design.component.FieldLabel
 import com.chopcal.app.core.design.component.StepActions
 import com.chopcal.app.core.design.component.StepHeader
-import com.chopcal.app.core.design.theme.ForestGreen
-import com.chopcal.app.core.design.theme.InkFaint
 import com.chopcal.app.domain.model.LengthUnit
 import com.chopcal.app.domain.model.WeightUnit
 import com.chopcal.app.page.onboarding.FieldId
@@ -54,7 +53,7 @@ fun BodyDataStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit)
             )
         }
         Spacer(Modifier.height(9.dp))
-        Text(text = stringResource(R.string.body_sub), fontSize = 13.sp, color = InkFaint)
+        Text(text = stringResource(R.string.body_sub), fontSize = 13.sp, color = chopCalColors.inkFaint)
 
         Column(
             modifier = Modifier
@@ -124,7 +123,7 @@ fun BodyDataStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit)
                 )
             }
             Spacer(Modifier.height(8.dp))
-            Text(text = stringResource(R.string.hint_update_profile), fontSize = 11.sp, color = InkFaint)
+            Text(text = stringResource(R.string.hint_update_profile), fontSize = 11.sp, color = chopCalColors.inkFaint)
         }
         StepActions(
             primaryText = stringResource(R.string.common_continue),
@@ -140,9 +139,9 @@ private fun UnitToggle(imperial: Boolean, onClick: () -> Unit) {
     Text(
         text = if (imperial) stringResource(R.string.toggle_imperial) else stringResource(R.string.toggle_metric),
         fontSize = 11.sp,
-        color = ForestGreen,
+        color = chopCalColors.forestGreen,
         modifier = Modifier
-            .background(ForestGreen.copy(alpha = 0.08f), RoundedCornerShape(20.dp))
+            .background(chopCalColors.forestGreen.copy(alpha = 0.08f), RoundedCornerShape(20.dp))
             .clickable(onClick = onClick)
             .padding(horizontal = 10.dp, vertical = 7.dp),
     )

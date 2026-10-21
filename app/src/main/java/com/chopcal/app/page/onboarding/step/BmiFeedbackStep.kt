@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding.step
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,8 +24,6 @@ import com.chopcal.app.R
 import com.chopcal.app.core.design.component.BmiRing
 import com.chopcal.app.core.design.component.StepActions
 import com.chopcal.app.core.design.component.StepHeader
-import com.chopcal.app.core.design.theme.InkMuted
-import com.chopcal.app.core.design.theme.SurfaceMuted
 import com.chopcal.app.page.onboarding.OnboardingIntent
 import com.chopcal.app.page.onboarding.OnboardingUiState
 
@@ -52,7 +51,7 @@ fun BmiFeedbackStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Un
                     text = stringResource(bmi.band.noteRes),
                     fontSize = 13.sp,
                     lineHeight = 22.sp,
-                    color = InkMuted,
+                    color = chopCalColors.inkMuted,
                     textAlign = TextAlign.Center,
                 )
             }
@@ -60,16 +59,16 @@ fun BmiFeedbackStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Un
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(SurfaceMuted, RoundedCornerShape(12.dp))
+                    .background(chopCalColors.surfaceMuted, RoundedCornerShape(12.dp))
                     .padding(13.dp),
             ) {
-                Text(text = "ⓘ", fontSize = 10.sp, color = InkMuted)
+                Text(text = "ⓘ", fontSize = 10.sp, color = chopCalColors.inkMuted)
                 Spacer(Modifier.size(9.dp))
                 Text(
                     text = stringResource(R.string.bmi_info),
                     fontSize = 10.sp,
                     lineHeight = 16.sp,
-                    color = InkMuted,
+                    color = chopCalColors.inkMuted,
                 )
             }
         }

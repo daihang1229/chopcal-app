@@ -2,6 +2,7 @@ package com.chopcal.app.domain.repository
 
 import com.chopcal.app.domain.model.DailyTarget
 import com.chopcal.app.domain.model.DeviceInfo
+import com.chopcal.app.domain.model.ThemeMode
 import com.chopcal.app.domain.model.UserProfile
 import kotlinx.coroutines.flow.Flow
 
@@ -12,9 +13,11 @@ interface UserProfileRepository {
     val profile: Flow<UserProfile?>
     val device: Flow<DeviceInfo>
     val dailyTarget: Flow<DailyTarget?>
+    val themeMode: Flow<ThemeMode>
 
     suspend fun saveProfile(profile: UserProfile)
     suspend fun saveDailyTarget(target: DailyTarget)
+    suspend fun saveThemeMode(mode: ThemeMode)
     suspend fun markOnboarded()
     suspend fun recordSkip()
     suspend fun ensureDevice(): DeviceInfo

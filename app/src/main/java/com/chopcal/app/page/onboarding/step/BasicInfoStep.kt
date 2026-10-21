@@ -1,4 +1,5 @@
 package com.chopcal.app.page.onboarding.step
+import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,6 @@ import com.chopcal.app.core.design.component.FieldLabel
 import com.chopcal.app.core.design.component.SegmentedControl
 import com.chopcal.app.core.design.component.StepActions
 import com.chopcal.app.core.design.component.StepHeader
-import com.chopcal.app.core.design.theme.InkFaint
 import com.chopcal.app.domain.model.Gender
 import com.chopcal.app.page.onboarding.FieldId
 import com.chopcal.app.page.onboarding.OnboardingIntent
@@ -63,7 +63,7 @@ fun BasicInfoStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit
                 error = state.fieldErrors[FieldId.AGE],
             )
             Spacer(Modifier.height(8.dp))
-            Text(text = stringResource(R.string.hint_age_range), fontSize = 11.sp, color = InkFaint)
+            Text(text = stringResource(R.string.hint_age_range), fontSize = 11.sp, color = chopCalColors.inkFaint)
         }
         StepActions(
             primaryText = stringResource(R.string.common_continue),
