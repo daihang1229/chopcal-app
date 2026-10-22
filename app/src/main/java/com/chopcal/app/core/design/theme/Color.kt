@@ -9,8 +9,8 @@ import androidx.compose.ui.graphics.Color
  */
 
 // ── 主色 ──────────────────────────────────────────────────────
-val ForestGreen = Color(0xFF275B46)   // 主色：深森林绿（primary）
-val Lime = Color(0xFFD9F276)          // 强调：青柠（accent）
+val ForestGreen = Color(0xFF618A37)   // 主色：柔和森林绿（primary）
+val Lime = Color(0xFFD5D8B2)          // 强调：浅鼠尾草绿（accent）
 
 // ── 背景 / 表面 ────────────────────────────────────────────────
 val Paper = Color(0xFFF6F5EF)         // 页面背景：暖纸色

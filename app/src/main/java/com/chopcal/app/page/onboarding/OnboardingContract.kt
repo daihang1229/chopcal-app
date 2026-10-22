@@ -25,6 +25,7 @@ sealed interface OnboardingIntent : UiIntent {
     data object Back : OnboardingIntent
     data object Skip : OnboardingIntent
     data object Finish : OnboardingIntent
+    data object OpenPrivacy : OnboardingIntent
     data class GoTo(val step: StepId) : OnboardingIntent
     data class PageSettled(val index: Int) : OnboardingIntent
 }

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,7 +40,7 @@ fun BmiFeedbackStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Un
             title = stringResource(R.string.bmi_title),
         )
         Column(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).offset(y= (-44).dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {

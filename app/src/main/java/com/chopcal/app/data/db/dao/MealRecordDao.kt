@@ -13,6 +13,9 @@ interface MealRecordDao {
     @Query("SELECT * FROM meal_records WHERE dateEpochDay = :date ORDER BY createdAt ASC")
     fun observeByDate(date: Long): Flow<List<MealRecordEntity>>
 
+    @Query("SELECT * FROM meal_records WHERE dateEpochDay BETWEEN :start AND :end ORDER BY dateEpochDay ASC, createdAt ASC")
+    fun observeRange(start: Long, end: Long): Flow<List<MealRecordEntity>>
+
     @Insert
     suspend fun insert(entity: MealRecordEntity): Long
 

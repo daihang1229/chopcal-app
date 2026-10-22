@@ -66,6 +66,7 @@ private fun HomeScreenPreview() {
             onOpenProfile = {},
             onOpenPro = {},
             onOpenRecord = {},
+            onOpenProgress = {},
             onWaterClick = {},
             onStepClick = {},
         )

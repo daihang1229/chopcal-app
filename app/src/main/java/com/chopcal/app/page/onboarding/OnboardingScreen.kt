@@ -46,6 +46,7 @@ private const val WELCOME_COUNTDOWN_SECONDS = 3
 fun OnboardingScreen(
     viewModel: OnboardingViewModel,
     onGoHome: () -> Unit,
+    onOpenPrivacy: () -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -53,7 +54,7 @@ fun OnboardingScreen(
         when (effect) {
             OnboardingEffect.GoHome -> onGoHome()
             OnboardingEffect.RequestNotificationPermission -> Unit
-            OnboardingEffect.OpenPrivacy -> Unit
+            OnboardingEffect.OpenPrivacy -> onOpenPrivacy()
         }
     }
 

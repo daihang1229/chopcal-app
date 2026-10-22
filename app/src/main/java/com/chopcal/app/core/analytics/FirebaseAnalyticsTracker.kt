@@ -3,6 +3,7 @@ package com.chopcal.app.core.analytics
 import android.content.Context
 import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.rainbow.compose.core.log.ComposeLog
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,10 +19,12 @@ class FirebaseAnalyticsTracker @Inject constructor(
     private val analytics = FirebaseAnalytics.getInstance(context)
 
     override fun setUserId(userId: String) {
+        ComposeLog.d("FirebaseAnalytics: setUserId $userId")
         analytics.setUserId(userId)
     }
 
     override fun logEvent(name: String, params: Map<String, Any>) {
+        ComposeLog.d("FirebaseAnalytics: logEvent $name, params=$params")
         val bundle = Bundle()
         params.forEach { (key, value) -> bundle.putTyped(key, value) }
         analytics.logEvent(name, bundle)

@@ -21,9 +21,16 @@ class RecordRepositoryImpl @Inject constructor(
     override fun observeMeals(dateEpochDay: Long): Flow<List<MealRecord>> =
         mealRecordDao.observeByDate(dateEpochDay).map { list -> list.map { it.toDomain() } }
 
+    override fun observeMealsRange(startEpochDay: Long, endEpochDay: Long): Flow<List<MealRecord>> =
+        mealRecordDao.observeRange(startEpochDay, endEpochDay).map { list -> list.map { it.toDomain() } }
+
     override fun observeMetric(dateEpochDay: Long): Flow<DailyMetric> =
         dailyMetricDao.observeByDate(dateEpochDay)
             .map { it?.toDomain() ?: DailyMetric(dateEpochDay = dateEpochDay) }
+
+    override fun observeMetricsRange(startEpochDay: Long, endEpochDay: Long): Flow<List<DailyMetric>> =
+        dailyMetricDao.observeRange(startEpochDay, endEpochDay)
+            .map { list -> list.map { it.toDomain() } }
 
     override suspend fun saveMeal(record: MealRecord) {
         mealRecordDao.insert(MealRecordEntity.fromDomain(record))

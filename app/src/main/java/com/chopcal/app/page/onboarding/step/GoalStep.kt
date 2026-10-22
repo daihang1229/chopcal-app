@@ -31,8 +31,8 @@ fun GoalStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
             sub = stringResource(R.string.goal_sub),
         )
         Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.weight(1f).padding(top = 50.dp),
+            verticalArrangement = Arrangement.Top,
         ) {
             GoalType.entries.forEach { goal ->
                 SelectableCard(

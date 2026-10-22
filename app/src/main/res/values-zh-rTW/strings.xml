@@ -214,4 +214,91 @@
     <!-- Pro -->
     <string name="pro_title">ChopCal Pro</string>
     <string name="pro_placeholder">訂閱方案將在這裡顯示</string>
+
+    <!-- Progress -->
+    <string name="progress_title">我的進度</string>
+    <string name="progress_subtitle_filled">看見每一點堅持</string>
+    <string name="progress_subtitle_empty">每一步，都從今天開始</string>
+
+    <string name="progress_range_since_start">自開始</string>
+    <string name="progress_range_1m">1月</string>
+    <string name="progress_range_7d">7日</string>
+
+    <string name="progress_badge_lose">減脂目標</string>
+    <string name="progress_badge_maintain">保持體重</string>
+    <string name="progress_badge_gain">增重目標</string>
+    <string name="progress_badge_muscle">增肌目標</string>
+
+    <string name="progress_lost_fmt">已減 %1$s %3$s · 還剩 %2$s %3$s</string>
+    <string name="progress_gained_fmt">已增 %1$s %3$s · 還剩 %2$s %3$s</string>
+    <string name="progress_maintain_fmt">目前 %1$s %2$s · 保持穩定</string>
+    <string name="progress_reach_by">預計 %1$s 達成</string>
+    <string name="progress_reach_later">持續記錄後，為你估算預計達成日期</string>
+    <string name="progress_fluctuation">波動 ±%1$s</string>
+
+    <string name="progress_weight_title">體重動態</string>
+    <string name="progress_weight_sub">每一次記錄，都在靠近目標</string>
+    <string name="progress_weight_sub_empty">新增體重記錄，開始追蹤變化</string>
+    <string name="progress_on_track_fmt">還剩 %1$d 天 · 按目前節奏，預計按時達成</string>
+    <string name="progress_behind_fmt">按目前節奏，可能比計畫晚 %1$d 週</string>
+    <string name="progress_ahead">比計畫更快，注意別減太快</string>
+    <string name="progress_insufficient">還沒有足夠資料，暫不估算達成日期</string>
+    <string name="progress_record_weight">＋ 記錄體重</string>
+    <string name="progress_no_weight_yet">還沒有體重記錄</string>
+    <string name="progress_first_weight_hint">記錄第一次體重，趨勢會從這裡開始</string>
+
+    <string name="progress_calories_title">卡路里攝取</string>
+    <string name="progress_calories_sub">每日攝取與目標對照</string>
+    <string name="progress_calories_sub_empty">記錄飲食後，查看每日攝取趨勢</string>
+    <string name="progress_calorie_target">目標 %1$d kcal</string>
+
+    <string name="progress_steps_water_title">步數 &amp; 飲水</string>
+    <string name="progress_steps_water_sub">保持日常活動與水分補充</string>
+    <string name="progress_steps_water_sub_empty">在首頁記錄步數和飲水量後，這裡會生成趨勢</string>
+    <string name="progress_steps_water_empty_hint">在首頁記錄步數和飲水量後，這裡會生成趨勢</string>
+    <string name="progress_legend_steps">步數</string>
+    <string name="progress_legend_water">飲水</string>
+
+    <string name="progress_weekly_title">本週小結</string>
+    <string name="progress_weekly_badge">本週</string>
+    <string name="progress_weekly_avg">日均攝取</string>
+    <string name="progress_kcal_unit">kcal</string>
+    <string name="progress_vs_last">較上週 %1$d</string>
+    <string name="progress_weekly_met">本週達標</string>
+    <string name="progress_weekly_days">/ %1$d 天</string>
+    <string name="progress_protein">蛋白質</string>
+    <string name="progress_carbs">碳水</string>
+    <string name="progress_fat">脂肪</string>
+    <string name="progress_streak_fmt">連續記錄 %1$d 天</string>
+    <string name="progress_view_all">查看全部記錄</string>
+    <string name="progress_weekly_empty">本週資料還未開始</string>
+    <string name="progress_weekly_empty_sub">記錄飲食後，這裡會整理你的每週變化</string>
+
+    <string name="progress_weight_input_title">記錄體重</string>
+    <string name="progress_weight_input_label">體重（%1$s）</string>
+    <string name="progress_weight_input_date">日期</string>
+    <string name="progress_weight_input_save">儲存</string>
+
+    <!-- Home calorie ring -->
+    <string name="home_calorie_of_target">/ %1$d kcal</string>
+    <string name="home_calorie_complete">%1$d%% 已完成</string>
+
+    <!-- Privacy -->
+    <string name="privacy_title">隱私政策</string>
+    <string name="privacy_intro">ChopCal 重視你的隱私。本政策說明我們收集哪些資訊、如何使用。</string>
+    <string name="privacy_section_data">我們收集的資訊</string>
+    <string name="privacy_section_data_body">你的目標、身高、體重、飲食記錄、步數與飲水，以及一個匿名裝置識別碼。</string>
+    <string name="privacy_section_use">我們如何使用</string>
+    <string name="privacy_section_use_body">用於估算熱量、生成趨勢、制定每日計畫。我們不會向第三方出售你的資料。</string>
+    <string name="privacy_section_storage">資料儲存與統計</string>
+    <string name="privacy_section_storage_body">你的資料保存在本機。我們僅使用 Firebase 收集匿名使用統計與當機報告，用於改進產品。</string>
+    <string name="privacy_permissions_title">權限說明</string>
+    <string name="permission_camera">相機</string>
+    <string name="permission_camera_desc">僅用於拍照辨識食物，你可隨時拒絕。</string>
+    <string name="permission_notification">通知</string>
+    <string name="permission_notification_desc">可選的記錄與每週量體重提醒。</string>
+    <string name="permission_internet">網路</string>
+    <string name="permission_internet_desc">用於 AI 辨識、使用統計與當機回報。</string>
+    <string name="permission_health">健康資料（二期）</string>
+    <string name="permission_health_desc">經你授權後透過 HealthKit / Google Fit 同步步數。</string>
 </resources>

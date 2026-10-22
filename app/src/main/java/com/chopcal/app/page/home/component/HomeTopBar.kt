@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ShowChart
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
@@ -39,6 +40,7 @@ fun HomeTopBar(
     onOpenProfile: () -> Unit,
     onOpenPro: () -> Unit,
     onOpenRecord: () -> Unit,
+    onOpenProgress: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -131,6 +133,24 @@ fun HomeTopBar(
             ) {
                 Icon(
                     imageVector = Icons.Filled.History,
+                    contentDescription = null,
+                    tint = chopCalColors.forestGreen,
+                    modifier = Modifier.size(17.dp),
+                )
+            }
+
+            // 进度（趋势）
+            Box(
+                modifier = Modifier
+                    .padding(start = 10.dp)
+                    .size(30.dp)
+                    .clip(CircleShape)
+                    .background(chopCalColors.surfaceMuted)
+                    .clickable(onClick = onOpenProgress),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ShowChart,
                     contentDescription = null,
                     tint = chopCalColors.forestGreen,
                     modifier = Modifier.size(17.dp),

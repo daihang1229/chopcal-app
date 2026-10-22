@@ -56,6 +56,7 @@ fun HomeScreen(
     onOpenProfile: () -> Unit,
     onOpenPro: () -> Unit,
     onOpenRecord: () -> Unit,
+    onOpenProgress: () -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -82,6 +83,7 @@ fun HomeScreen(
             onOpenProfile = onOpenProfile,
             onOpenPro = onOpenPro,
             onOpenRecord = onOpenRecord,
+            onOpenProgress = onOpenProgress,
             onWaterClick = { showWaterPicker = true },
             onStepClick = { showStepPicker = true },
             modifier = Modifier.padding(padding),
@@ -134,6 +136,7 @@ internal fun HomeContent(
     onOpenProfile: () -> Unit,
     onOpenPro: () -> Unit,
     onOpenRecord: () -> Unit,
+    onOpenProgress: () -> Unit,
     onWaterClick: () -> Unit,
     onStepClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -148,6 +151,7 @@ internal fun HomeContent(
             onOpenProfile = onOpenProfile,
             onOpenPro = onOpenPro,
             onOpenRecord = onOpenRecord,
+            onOpenProgress = onOpenProgress,
         )
 
         // 问候语

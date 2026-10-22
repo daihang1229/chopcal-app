@@ -1,10 +1,16 @@
 package com.rainbow.compose.core.base
 
 import android.os.Bundle
+import android.os.SystemClock
+import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
+import com.rainbow.compose.core.R
+
+private const val EXIT_DOUBLE_PRESS_INTERVAL_MS = 2000L
 
 /**
  * Compose 页面 Activity 基类。
@@ -18,10 +24,32 @@ import androidx.compose.runtime.Composable
  *   YourComposeActivity → BaseCommonComposeActivity → BaseComposeActivity → ComponentActivity
  */
 abstract class BaseComposeActivity : ComponentActivity() {
+    private var lastBackPressTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val context = applicationContext
+        // 双击返回退出：第一次提示，短时间再次点击退出
+        onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val now = SystemClock.elapsedRealtime()
+                    if (now - lastBackPressTime <= EXIT_DOUBLE_PRESS_INTERVAL_MS) {
+                        finish()
+                    } else {
+                        lastBackPressTime = now
+                        Toast.makeText(
+                            context,
+                            getString(R.string.exit_hint),
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    }
+                }
+            },
+        )
+
     }
 
     /**

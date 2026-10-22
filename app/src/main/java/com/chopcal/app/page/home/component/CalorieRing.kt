@@ -18,6 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.chopcal.app.R
 import com.chopcal.app.core.design.theme.chopCalColors
 import kotlin.math.roundToInt
 
@@ -74,12 +76,12 @@ fun CalorieRing(
                 color = chopCalColors.ink,
             )
             Text(
-                text = "/ $targetKcal kcal",
+                text = stringResource(R.string.home_calorie_of_target, targetKcal),
                 fontSize = 10.sp,
                 color = chopCalColors.inkMuted,
             )
             Text(
-                text = "$percent% 已完成",
+                text = stringResource(R.string.home_calorie_complete, percent),
                 fontSize = 9.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = chopCalColors.forestGreen,

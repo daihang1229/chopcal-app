@@ -1,5 +1,6 @@
 package com.chopcal.app.page.profile
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -27,7 +29,7 @@ import com.rainbow.compose.ui.theme.CommonTheme
  * 个人中心二级页：信息 + 设置（P2，当前为骨架）。
  */
 @Composable
-fun ProfileScreen(onBack: () -> Unit) {
+fun ProfileScreen(onBack: () -> Unit, onOpenPrivacy: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -51,6 +53,22 @@ fun ProfileScreen(onBack: () -> Unit) {
             fontSize = 14.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+
+        Spacer(Modifier.height(24.dp))
+        Text(
+            text = stringResource(R.string.privacy_title),
+            fontSize = 14.sp,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .clickable(onClick = onOpenPrivacy)
+                .padding(vertical = 8.dp),
+        )
+
+        Spacer(Modifier.height(16.dp))
+        // TODO(测试)：验证 Crashlytics 上报后删除此按钮
+        Button(onClick = { throw RuntimeException("ChopCal test crash") }) {
+            Text("测试崩溃 (Test Crash)")
+        }
     }
 }
 
@@ -58,6 +76,6 @@ fun ProfileScreen(onBack: () -> Unit) {
 @Composable
 private fun ProfileScreenPreview() {
     CommonTheme(darkTheme = false) {
-        ProfileScreen(onBack = {})
+        ProfileScreen(onBack = {}, onOpenPrivacy = {})
     }
 }

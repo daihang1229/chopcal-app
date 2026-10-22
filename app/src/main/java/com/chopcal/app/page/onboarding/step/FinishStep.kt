@@ -3,6 +3,7 @@ import com.chopcal.app.core.design.theme.chopCalColors
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -71,6 +72,7 @@ fun FinishStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
                     title = stringResource(R.string.finish_setting_privacy),
                     sub = stringResource(R.string.finish_setting_privacy_sub),
                     action = "›",
+                    onClick = { onIntent(OnboardingIntent.OpenPrivacy) },
                 )
             }
         }
@@ -115,10 +117,12 @@ private fun SettingRow(
     title: String,
     sub: String,
     action: String,
+    onClick: (() -> Unit)? = null,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
             .padding(vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

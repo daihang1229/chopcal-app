@@ -42,7 +42,7 @@ fun BasicInfoStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit
         Column(
             modifier = Modifier
                 .weight(1f)
-                .offset(y = (-40).dp),
+                .offset(y = (-90).dp),
             verticalArrangement = Arrangement.Center,
         ) {
             FieldLabel(stringResource(R.string.label_sex))

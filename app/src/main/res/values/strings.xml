@@ -214,4 +214,91 @@
     <!-- Pro -->
     <string name="pro_title">ChopCal Pro</string>
     <string name="pro_placeholder">Subscription plans will appear here</string>
+
+    <!-- Progress -->
+    <string name="progress_title">My Progress</string>
+    <string name="progress_subtitle_filled">See every bit of progress</string>
+    <string name="progress_subtitle_empty">Every step starts today</string>
+
+    <string name="progress_range_since_start">Since start</string>
+    <string name="progress_range_1m">1M</string>
+    <string name="progress_range_7d">7D</string>
+
+    <string name="progress_badge_lose">Lose weight</string>
+    <string name="progress_badge_maintain">Maintain</string>
+    <string name="progress_badge_gain">Gain weight</string>
+    <string name="progress_badge_muscle">Build muscle</string>
+
+    <string name="progress_lost_fmt">Lost %1$s %3$s · %2$s %3$s to go</string>
+    <string name="progress_gained_fmt">Gained %1$s %3$s · %2$s %3$s to go</string>
+    <string name="progress_maintain_fmt">Current %1$s %2$s · stable</string>
+    <string name="progress_reach_by">Reach by %1$s</string>
+    <string name="progress_reach_later">Keep logging to estimate your target date</string>
+    <string name="progress_fluctuation">±%1$s range</string>
+
+    <string name="progress_weight_title">Weight</string>
+    <string name="progress_weight_sub">Every record moves you closer to your goal</string>
+    <string name="progress_weight_sub_empty">Add a weight log to start tracking</string>
+    <string name="progress_on_track_fmt">%1$d days left · on pace to reach it</string>
+    <string name="progress_behind_fmt">May be %1$d weeks behind plan</string>
+    <string name="progress_ahead">Ahead of pace — avoid losing too fast</string>
+    <string name="progress_insufficient">Not enough data to estimate yet</string>
+    <string name="progress_record_weight">＋ Log weight</string>
+    <string name="progress_no_weight_yet">No weight logs yet</string>
+    <string name="progress_first_weight_hint">Log your first weight and the trend starts here</string>
+
+    <string name="progress_calories_title">Calorie intake</string>
+    <string name="progress_calories_sub">Daily intake vs. target</string>
+    <string name="progress_calories_sub_empty">Log meals to see your daily trend</string>
+    <string name="progress_calorie_target">Target %1$d kcal</string>
+
+    <string name="progress_steps_water_title">Steps &amp; water</string>
+    <string name="progress_steps_water_sub">Keep up daily activity and hydration</string>
+    <string name="progress_steps_water_sub_empty">Log steps and water on Home to build trends</string>
+    <string name="progress_steps_water_empty_hint">Log steps and water on Home to build trends</string>
+    <string name="progress_legend_steps">Steps</string>
+    <string name="progress_legend_water">Water</string>
+
+    <string name="progress_weekly_title">This week</string>
+    <string name="progress_weekly_badge">This week</string>
+    <string name="progress_weekly_avg">Avg. intake</string>
+    <string name="progress_kcal_unit">kcal</string>
+    <string name="progress_vs_last">vs last week %1$d</string>
+    <string name="progress_weekly_met">On target</string>
+    <string name="progress_weekly_days">/ %1$d days</string>
+    <string name="progress_protein">Protein</string>
+    <string name="progress_carbs">Carbs</string>
+    <string name="progress_fat">Fat</string>
+    <string name="progress_streak_fmt">%1$d-day streak</string>
+    <string name="progress_view_all">View all records</string>
+    <string name="progress_weekly_empty">This week has no data yet</string>
+    <string name="progress_weekly_empty_sub">Log meals and we\'ll summarize your week</string>
+
+    <string name="progress_weight_input_title">Log weight</string>
+    <string name="progress_weight_input_label">Weight (%1$s)</string>
+    <string name="progress_weight_input_date">Date</string>
+    <string name="progress_weight_input_save">Save</string>
+
+    <!-- Home calorie ring -->
+    <string name="home_calorie_of_target">/ %1$d kcal</string>
+    <string name="home_calorie_complete">%1$d%% complete</string>
+
+    <!-- Privacy -->
+    <string name="privacy_title">Privacy Policy</string>
+    <string name="privacy_intro">ChopCal respects your privacy. This policy explains what data we collect and how we use it.</string>
+    <string name="privacy_section_data">What we collect</string>
+    <string name="privacy_section_data_body">Your goal, height, weight, meal records, steps and water intake, plus an anonymous device ID.</string>
+    <string name="privacy_section_use">How we use it</string>
+    <string name="privacy_section_use_body">To estimate calories, build your trends, and personalize your daily plan. We do not sell your data to third parties.</string>
+    <string name="privacy_section_storage">Storage &amp; analytics</string>
+    <string name="privacy_section_storage_body">Your data stays on your device. We use Firebase only for anonymous analytics and crash reports to improve the app.</string>
+    <string name="privacy_permissions_title">Permissions</string>
+    <string name="permission_camera">Camera</string>
+    <string name="permission_camera_desc">Used only to photograph and recognize your food. You can deny it anytime.</string>
+    <string name="permission_notification">Notifications</string>
+    <string name="permission_notification_desc">Optional reminders for logging meals and weekly weigh-ins.</string>
+    <string name="permission_internet">Network</string>
+    <string name="permission_internet_desc">Used for AI recognition, analytics and crash reporting.</string>
+    <string name="permission_health">Health data (later)</string>
+    <string name="permission_health_desc">Steps sync via HealthKit / Google Fit, only with your permission.</string>
 </resources>

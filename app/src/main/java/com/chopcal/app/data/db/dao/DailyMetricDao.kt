@@ -13,6 +13,9 @@ interface DailyMetricDao {
     @Query("SELECT * FROM daily_metrics WHERE dateEpochDay = :date")
     fun observeByDate(date: Long): Flow<DailyMetricEntity?>
 
+    @Query("SELECT * FROM daily_metrics WHERE dateEpochDay BETWEEN :start AND :end ORDER BY dateEpochDay ASC")
+    fun observeRange(start: Long, end: Long): Flow<List<DailyMetricEntity>>
+
     @Query("SELECT * FROM daily_metrics WHERE dateEpochDay = :date")
     suspend fun getByDate(date: Long): DailyMetricEntity?
 

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.chopcal.app.data.db.dao.DailyMetricDao
 import com.chopcal.app.data.db.dao.MealRecordDao
+import com.chopcal.app.data.db.dao.WeightEntryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +28,7 @@ object DatabaseModule {
 
     @Provides
     fun provideDailyMetricDao(db: ChopDatabase): DailyMetricDao = db.dailyMetricDao()
+
+    @Provides
+    fun provideWeightEntryDao(db: ChopDatabase): WeightEntryDao = db.weightEntryDao()
 }
