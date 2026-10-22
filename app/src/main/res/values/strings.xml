@@ -285,6 +285,9 @@
 
     <!-- Privacy -->
     <string name="privacy_title">Privacy Policy</string>
+    <string name="privacy_consent">By continuing, you agree to our Privacy Policy</string>
+    <string name="privacy_load_failed">Failed to load. Check your network and try again.</string>
+    <string name="privacy_retry">Retry</string>
     <string name="privacy_intro">ChopCal respects your privacy. This policy explains what data we collect and how we use it.</string>
     <string name="privacy_section_data">What we collect</string>
     <string name="privacy_section_data_body">Your goal, height, weight, meal records, steps and water intake, plus an anonymous device ID.</string>

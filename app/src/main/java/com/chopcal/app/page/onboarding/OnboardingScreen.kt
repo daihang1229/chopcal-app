@@ -47,13 +47,14 @@ fun OnboardingScreen(
     viewModel: OnboardingViewModel,
     onGoHome: () -> Unit,
     onOpenPrivacy: () -> Unit,
+    onRequestNotification: () -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
     CollectEffect(viewModel.effect) { effect ->
         when (effect) {
             OnboardingEffect.GoHome -> onGoHome()
-            OnboardingEffect.RequestNotificationPermission -> Unit
+            OnboardingEffect.RequestNotificationPermission -> onRequestNotification()
             OnboardingEffect.OpenPrivacy -> onOpenPrivacy()
         }
     }

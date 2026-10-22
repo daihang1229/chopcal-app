@@ -105,6 +105,7 @@ class OnboardingViewModel @Inject constructor(
             is OnboardingIntent.Skip -> onSkip()
             is OnboardingIntent.Finish -> onFinish()
             OnboardingIntent.OpenPrivacy -> sendEffect(OnboardingEffect.OpenPrivacy)
+            OnboardingIntent.RequestNotificationPermission -> sendEffect(OnboardingEffect.RequestNotificationPermission)
             is OnboardingIntent.GoTo -> onGoTo(intent.step)
             is OnboardingIntent.PageSettled -> onPageSettled(intent.index)
         }

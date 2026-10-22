@@ -1,15 +1,22 @@
 package com.chopcal.app.page.onboarding
 
+import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import com.chopcal.app.MainActivity
 import com.chopcal.app.core.analytics.AnalyticsEvents
 import com.chopcal.app.core.analytics.ScreenTracker
@@ -55,9 +62,12 @@ class OnboardingActivity : BaseComposeActivity() {
                     showSplash = false
                 }
 
-                if (showPrivacy) {
-                    PrivacyScreen(onBack = { showPrivacy = false })
-                } else {
+                val notificationPermissionLauncher = rememberLauncherForActivityResult(
+                    ActivityResultContracts.RequestPermission(),
+                ) { /* 结果暂不处理，后续按需处理“拒绝后引导到设置” */ }
+
+                Box(modifier = Modifier.fillMaxSize()) {
+                    // 底层：闪屏 → 引导页（始终组合，保持状态，隐私页覆盖时不销毁）
                     Crossfade(targetState = showSplash, label = "splash") { splash ->
                         if (splash) {
                             TrackedScreen(AnalyticsEvents.Screen.SPLASH, AnalyticsEvents.SCREEN_CLASS_ONBOARDING, screenTracker) {
@@ -68,13 +78,23 @@ class OnboardingActivity : BaseComposeActivity() {
                                 OnboardingScreen(
                                     viewModel = viewModel,
                                     onGoHome = {
-                                        startActivity(Intent(this, MainActivity::class.java))
+                                        startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
                                         finish()
                                     },
                                     onOpenPrivacy = { showPrivacy = true },
+                                    onRequestNotification = {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                        }
+                                    },
                                 )
                             }
                         }
+                    }
+
+                    // 顶层：隐私页（覆盖，不销毁底层）
+                    if (showPrivacy) {
+                        PrivacyScreen(onBack = { showPrivacy = false })
                     }
                 }
             }

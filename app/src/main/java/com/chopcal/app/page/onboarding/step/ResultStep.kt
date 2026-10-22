@@ -1,6 +1,7 @@
 package com.chopcal.app.page.onboarding.step
 import com.chopcal.app.core.design.theme.chopCalColors
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -53,11 +54,13 @@ fun ResultStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
         )
         Spacer(Modifier.height(16.dp))
         Text(
-            text = stringResource(R.string.privacy_placeholder),
+            text = stringResource(R.string.privacy_consent),
             fontSize = 10.sp,
-            color = chopCalColors.inkFaint,
+            color = chopCalColors.forestGreen,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onIntent(OnboardingIntent.OpenPrivacy) },
         )
         Spacer(Modifier.height(20.dp))
     }

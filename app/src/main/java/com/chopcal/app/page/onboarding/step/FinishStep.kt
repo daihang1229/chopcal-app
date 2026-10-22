@@ -66,6 +66,7 @@ fun FinishStep(state: OnboardingUiState, onIntent: (OnboardingIntent) -> Unit) {
                     title = stringResource(R.string.finish_setting_reminder),
                     sub = stringResource(R.string.finish_setting_reminder_sub),
                     action = stringResource(R.string.finish_action_turn_on),
+                    onClick = { onIntent(OnboardingIntent.RequestNotificationPermission) },
                 )
                 SettingRow(
                     icon = "⌑",

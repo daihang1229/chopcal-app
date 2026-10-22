@@ -285,6 +285,9 @@
 
     <!-- Privacy -->
     <string name="privacy_title">隱私政策</string>
+    <string name="privacy_consent">繼續即表示同意《隱私政策》</string>
+    <string name="privacy_load_failed">載入失敗，請檢查網路後重試</string>
+    <string name="privacy_retry">重試</string>
     <string name="privacy_intro">ChopCal 重視你的隱私。本政策說明我們收集哪些資訊、如何使用。</string>
     <string name="privacy_section_data">我們收集的資訊</string>
     <string name="privacy_section_data_body">你的目標、身高、體重、飲食記錄、步數與飲水，以及一個匿名裝置識別碼。</string>
