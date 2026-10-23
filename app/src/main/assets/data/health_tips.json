@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "说明": "AI 识别中（耗时加载态）滚动展示的健康小提示，本地存储，无需联网。",
+    "展示规则": "每个 tip 展示 5 秒后自动切下一个，循环滚动；进入识别中时随机起播。",
+    "分类": {
+      "ingredient": "食材",
+      "diet": "饮食",
+      "exercise": "运动"
+    },
+    "语言": "当前为中文单语言，后续多语言可在此基础上扩展（i18n）"
+  },
+  "tips": [
+    { "id": 1, "category": "ingredient", "text": "鸡胸肉是高蛋白低脂的优质蛋白，每100克约165千卡。" },
+    { "id": 2, "category": "ingredient", "text": "土豆淀粉高，算主食不算蔬菜，一盘土豆丝别当配菜吃。" },
+    { "id": 3, "category": "ingredient", "text": "豆腐富含植物蛋白，麻婆豆腐的热量主要来自油和肉末。" },
+    { "id": 4, "category": "ingredient", "text": "花生每100克约567千卡，油炸花生热量更高，减脂期要控量。" },
+    { "id": 5, "category": "ingredient", "text": "西兰花低热量高纤维，每100克仅约34千卡。" },
+    { "id": 6, "category": "ingredient", "text": "牛油果营养好但热量高，一颗约250千卡，吃半个就够。" },
+    { "id": 7, "category": "ingredient", "text": "深色蔬菜（菠菜、西兰花）营养密度更高。" },
+    { "id": 8, "category": "ingredient", "text": "粗粮比精白米面更扛饿，血糖也更平稳。" },
+    { "id": 9, "category": "diet", "text": "吃饭慢一点，大脑要20分钟才收到「饱了」的信号。" },
+    { "id": 10, "category": "diet", "text": "先吃菜、再吃肉、最后吃主食，有助于控血糖和食量。" },
+    { "id": 11, "category": "diet", "text": "饭前一杯水，能让你少吃一点。" },
+    { "id": 12, "category": "diet", "text": "少油少糖是中餐控卡的关键，同样的菜少油能省约30%热量。" },
+    { "id": 13, "category": "diet", "text": "睡眠不足会让人更馋高热量食物，减脂期保证7小时睡眠。" },
+    { "id": 14, "category": "diet", "text": "加餐选蛋白类（酸奶、鸡蛋）比甜点更扛饿。" },
+    { "id": 15, "category": "diet", "text": "酱料和饮料的热量常被低估，别被「一点点」麻痹。" },
+    { "id": 16, "category": "diet", "text": "规律三餐比不吃早餐更容易控制体重。" },
+    { "id": 17, "category": "exercise", "text": "每周150分钟中等强度运动，是维持健康的基础。" },
+    { "id": 18, "category": "exercise", "text": "力量训练提高基础代谢，增肌比纯节食更能长期保持。" },
+    { "id": 19, "category": "exercise", "text": "运动后30分钟内补蛋白质，有助于肌肉恢复。" },
+    { "id": 20, "category": "exercise", "text": "每天8000步是不错的日常活动目标。" },
+    { "id": 21, "category": "exercise", "text": "有氧减脂、力量塑形，两者结合效果最好。" },
+    { "id": 22, "category": "exercise", "text": "运动前热身5分钟，能降低受伤风险。" },
+    { "id": 23, "category": "exercise", "text": "爬楼梯、快走都是零成本的日常运动。" },
+    { "id": 24, "category": "exercise", "text": "久坐1小时就起来活动3分钟，比攒着一次性运动更好。" }
+  ]
+}

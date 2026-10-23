@@ -1,141 +1,87 @@
 package com.chopcal.app.data.repository
 
+import com.chopcal.app.data.datasource.local.DishJsonDataSource
+import com.chopcal.app.data.dto.AliasDto
+import com.chopcal.app.data.dto.DishDto
+import com.chopcal.app.data.dto.RecipeIngredientDto
+import com.chopcal.app.data.dto.SeasoningDto
+import com.chopcal.app.domain.model.Alias
 import com.chopcal.app.domain.model.Dish
-import com.chopcal.app.domain.model.IngredientLine
+import com.chopcal.app.domain.model.RecipeIngredient
+import com.chopcal.app.domain.model.Seasoning
 import com.chopcal.app.domain.repository.DishRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * 中餐菜品库（标准配方）MVP 实现。
+ * 菜品库 JSON 实现（dishes_standard.json，500 道）。
  *
- * 目前内置少量样例，后续替换为 500 道配方 JSON（data/foods.json）。
- * 热量从「主料 + 辅料 + 调料」配方自动推导，符合热量计算规则.md。
+ * 构造时同步加载并建 name → Dish 索引（500 道菜 JSON 解析毫秒级，可接受）。
+ * 模糊搜索：归一化（小写 + 去空格）后对 name / aliases 打分排序。
  */
 @Singleton
-class DishRepositoryImpl @Inject constructor() : DishRepository {
+class DishRepositoryImpl @Inject constructor(
+    private val dataSource: DishJsonDataSource,
+) : DishRepository {
 
-    private val dishes: Map<String, Dish> = listOf(
-        Dish(
-            name = "宫保鸡丁",
-            baseKcal = 520,
-            proteinG = 38,
-            carbsG = 22,
-            fatG = 30,
-            ingredients = listOf(
-                IngredientLine("鸡胸肉", 250, 330),
-                IngredientLine("花生米", 50, 280),
-                IngredientLine("植物油", 25, 225),
-            ),
-        ),
-        Dish(
-            name = "麻婆豆腐",
-            baseKcal = 410,
-            proteinG = 24,
-            carbsG = 16,
-            fatG = 28,
-            ingredients = listOf(
-                IngredientLine("嫩豆腐", 300, 240),
-                IngredientLine("猪肉末", 60, 90),
-                IngredientLine("植物油", 20, 180),
-            ),
-        ),
-        Dish(
-            name = "清炒虾仁",
-            baseKcal = 280,
-            proteinG = 34,
-            carbsG = 8,
-            fatG = 12,
-            ingredients = listOf(
-                IngredientLine("虾仁", 200, 200),
-                IngredientLine("植物油", 10, 90),
-            ),
-        ),
-        Dish(
-            name = "红烧排骨",
-            baseKcal = 640,
-            proteinG = 42,
-            carbsG = 18,
-            fatG = 44,
-            ingredients = listOf(
-                IngredientLine("猪排骨", 300, 830),
-                IngredientLine("白糖", 20, 80),
-                IngredientLine("植物油", 15, 135),
-            ),
-        ),
-        Dish(
-            name = "清蒸鲈鱼",
-            baseKcal = 300,
-            proteinG = 40,
-            carbsG = 2,
-            fatG = 14,
-            ingredients = listOf(
-                IngredientLine("鲈鱼", 350, 385),
-                IngredientLine("植物油", 5, 45),
-            ),
-        ),
-        Dish(
-            name = "西红柿炒鸡蛋",
-            baseKcal = 350,
-            proteinG = 20,
-            carbsG = 16,
-            fatG = 22,
-            ingredients = listOf(
-                IngredientLine("鸡蛋", 150, 220),
-                IngredientLine("西红柿", 200, 40),
-                IngredientLine("植物油", 15, 135),
-            ),
-        ),
-        Dish(
-            name = "干煸四季豆",
-            baseKcal = 360,
-            proteinG = 8,
-            carbsG = 20,
-            fatG = 28,
-            ingredients = listOf(
-                IngredientLine("四季豆", 250, 75),
-                IngredientLine("猪肉末", 50, 75),
-                IngredientLine("植物油", 20, 180),
-            ),
-        ),
-        Dish(
-            name = "糖醋里脊",
-            baseKcal = 580,
-            proteinG = 34,
-            carbsG = 38,
-            fatG = 30,
-            ingredients = listOf(
-                IngredientLine("猪里脊", 250, 360),
-                IngredientLine("白糖", 25, 100),
-                IngredientLine("植物油", 20, 180),
-            ),
-        ),
-        Dish(
-            name = "蛋炒饭",
-            baseKcal = 500,
-            proteinG = 16,
-            carbsG = 66,
-            fatG = 20,
-            ingredients = listOf(
-                IngredientLine("米饭", 300, 350),
-                IngredientLine("鸡蛋", 100, 150),
-                IngredientLine("植物油", 10, 90),
-            ),
-        ),
-        Dish(
-            name = "口水鸡",
-            baseKcal = 460,
-            proteinG = 38,
-            carbsG = 6,
-            fatG = 32,
-            ingredients = listOf(
-                IngredientLine("鸡腿", 300, 540),
-                IngredientLine("红油", 15, 135),
-            ),
-        ),
-    ).associateBy { it.name }
+    private val byName: Map<String, Dish> = dataSource.load()
+        .map { it.toDomain() }
+        .associateBy { it.name }
 
-    override fun all(): List<Dish> = dishes.values.toList()
+    override fun all(): List<Dish> = byName.values.toList()
 
-    override fun find(name: String): Dish? = dishes[name]
+    override fun find(name: String): Dish? = byName[name]
+
+    override fun search(query: String): List<Dish> {
+        val q = normalize(query)
+        if (q.isEmpty()) return emptyList()
+        return all()
+            .mapNotNull { dish -> matchScore(dish, q)?.let { dish to it } }
+            .sortedByDescending { it.second }
+            .map { it.first }
+    }
+
+    override fun matches(name: String): Dish? =
+        find(name) ?: search(name).firstOrNull()
+
+    /** 归一化：小写 + 去空格（中文无影响，拼音/英文去空格便于全拼/首字母匹配）。 */
+    private fun normalize(s: String): String =
+        s.lowercase().filter { !it.isWhitespace() }
+
+    /** 打分：精确名 100 > 名包含 80 > 别名/拼音包含 60；无命中返回 null。 */
+    private fun matchScore(dish: Dish, q: String): Int? {
+        val name = normalize(dish.name)
+        return when {
+            name == q -> 100
+            name.contains(q) -> 80
+            dish.aliases.any { normalize(it.value).contains(q) } -> 60
+            else -> null
+        }
+    }
+
+    private fun DishDto.toDomain(): Dish = Dish(
+        name = name,
+        category = category,
+        method = method,
+        aliases = aliases.map { it.toDomain() },
+        ingredients = ingredients.map { it.toDomain() },
+        seasonings = seasonings.map { it.toDomain() },
+    )
+
+    private fun AliasDto.toDomain(): Alias = Alias(type = type, value = value)
+
+    private fun RecipeIngredientDto.toDomain(): RecipeIngredient = RecipeIngredient(
+        name = name,
+        role = role,
+        amountTypical = amountTypical,
+        amountMin = amountMin,
+        amountMax = amountMax,
+    )
+
+    private fun SeasoningDto.toDomain(): Seasoning = Seasoning(
+        name = name,
+        amountTypical = amountTypical,
+        amountMin = amountMin,
+        amountMax = amountMax,
+    )
 }

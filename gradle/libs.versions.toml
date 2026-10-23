@@ -16,6 +16,12 @@ coil = "3.2.0"
 lottie = "6.2.0"
 vico = "2.0.1"
 
+# 相机
+camerax = "1.4.0"
+
+# 导航
+navigationCompose = "2.8.4"
+
 # 网络
 retrofit = "2.11.0"
 okhttp = "4.12.0"
@@ -27,6 +33,9 @@ hilt = "2.55"
 datastore = "1.1.1"
 kotlinxSerialization = "1.8.0"
 room = "2.7.1"
+
+# 测试
+junit = "4.13.2"
 
 # Firebase
 firebaseBom = "33.7.0"
@@ -60,6 +69,15 @@ coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref 
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 
+# 相机
+camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "camerax" }
+camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax" }
+camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
+camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
+
+# 导航
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
 # 网络
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
@@ -76,6 +94,9 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+# 测试
+junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 # Firebase
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }

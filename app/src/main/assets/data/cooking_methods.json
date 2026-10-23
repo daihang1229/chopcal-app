@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "说明": "烹饪方式对热量的影响系数。以「家常炒」为基准 1.0。",
+    "用法": "菜品热量 = 菜品基准热量(每100g) × 做法系数",
+    "为什么做法影响热量": "烹饪方式的差异主要来自用油量和加糖量，蒸煮不加额外热量，炒/炸/红烧则通过油和糖增加热量"
+  },
+  "methods": [
+    { "name": "白灼", "coefficient": 0.85, "note": "焯水后调味，几乎不加油" },
+    { "name": "凉拌", "coefficient": 0.85, "note": "生食或焯水，少量调味油" },
+    { "name": "蒸", "coefficient": 0.90, "note": "不加油，食材本身热量为主" },
+    { "name": "煮", "coefficient": 0.90, "note": "水煮，如面条、水饺、汤" },
+    { "name": "炖", "coefficient": 0.95, "note": "小火慢炖，部分脂肪溶入汤中" },
+    { "name": "清炒", "coefficient": 0.95, "note": "少油快炒" },
+    { "name": "家常炒", "coefficient": 1.00, "note": "基准：正常油量炒菜" },
+    { "name": "焖", "coefficient": 1.00, "note": "焖饭焖菜，油量接近家常炒" },
+    { "name": "现制", "coefficient": 1.00, "note": "饮品/甜点等现做，按配方本身" },
+    { "name": "红烧", "coefficient": 1.10, "note": "加糖上色，糖增加碳水热量" },
+    { "name": "糖醋", "coefficient": 1.15, "note": "糖+醋，糖份热量高" },
+    { "name": "烙", "coefficient": 1.15, "note": "烙饼/煎饼，需用油" },
+    { "name": "煎", "coefficient": 1.15, "note": "油煎，吸油中等" },
+    { "name": "干煸", "coefficient": 1.20, "note": "先炸后炒，用油量大" },
+    { "name": "油炸", "coefficient": 1.30, "note": "吸油量最大，配合 oil_uptake.json 精算" }
+  ]
+}

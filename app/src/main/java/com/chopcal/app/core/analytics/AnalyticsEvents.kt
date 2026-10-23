@@ -35,5 +35,6 @@ object AnalyticsEvents {
         const val PROFILE = "profile"
         const val PRO = "pro"
         const val PROGRESS = "progress"
+        const val RECOGNIZE = "recognize"
     }
 }

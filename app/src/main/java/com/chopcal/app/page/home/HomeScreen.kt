@@ -1,5 +1,11 @@
 package com.chopcal.app.page.home
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.activity.compose.BackHandler
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -17,8 +23,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,40 +38,75 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chopcal.app.R
 import com.chopcal.app.core.design.component.ChopLoadingIndicator
 import com.chopcal.app.core.design.theme.chopCalColors
+import com.chopcal.app.domain.model.CaptureMealTarget
 import com.chopcal.app.domain.model.GoalType
+import com.chopcal.app.domain.model.MealType
 import com.chopcal.app.page.home.component.CalorieRing
-import com.chopcal.app.page.home.component.CaptureSheet
 import com.chopcal.app.page.home.component.HomeTopBar
 import com.chopcal.app.page.home.component.MacroSection
 import com.chopcal.app.page.home.component.MealSection
 import com.chopcal.app.page.home.component.WaterStepSection
 import com.chopcal.app.page.home.component.WeekSelector
 import com.chopcal.app.page.home.component.WheelPickerSheet
+import com.chopcal.app.page.recognize.CameraCaptureScreen
+import java.time.LocalTime
 
 private val WaterValues = (0..5000 step 50).toList()
 private val StepValues = (0..50000 step 500).toList()
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
+    onOpenRecognize: (CaptureMealTarget, Long, String) -> Unit,
     onOpenProfile: () -> Unit,
     onOpenPro: () -> Unit,
     onOpenRecord: () -> Unit,
     onOpenProgress: () -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     // 水 / 步数滚轮选择器本地状态
     var showWaterPicker by remember { mutableStateOf(false) }
     var showStepPicker by remember { mutableStateOf(false) }
+    var showCaptureSheet by remember { mutableStateOf(false) }
+    var selectedTarget by remember { mutableStateOf<CaptureMealTarget>(CaptureMealTarget.QueryOnly) }
+    var showCamera by remember { mutableStateOf(false) }
+
+    val albumLauncher = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null) {
+            showCaptureSheet = false
+            onOpenRecognize(selectedTarget, state.selectedDateEpochDay, uri.toString())
+        }
+    }
+    val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+        if (granted) {
+            showCaptureSheet = false
+            showCamera = true
+        }
+    }
+    val launchCamera = {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            showCaptureSheet = false
+            showCamera = true
+        } else {
+            permissionLauncher.launch(Manifest.permission.CAMERA)
+        }
+    }
+    val launchAlbum = {
+        albumLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
 
     if (state.loading) {
         Box(Modifier.fillMaxSize().background(Color.White)) {
@@ -74,12 +118,16 @@ fun HomeScreen(
     Scaffold(
         containerColor = Color.White,
         floatingActionButton = {
-            FloatingAddButton(onClick = { viewModel.sendIntent(HomeIntent.OpenCapture) })
+            FloatingAddButton(onClick = {
+                selectedTarget = CaptureMealTarget.Meal(defaultMealByTime())
+                showCaptureSheet = true
+            })
         },
     ) { padding ->
         HomeContent(
             state = state,
             onIntent = viewModel::sendIntent,
+            onOpenRecognize = { target -> selectedTarget = target; showCaptureSheet = true },
             onOpenProfile = onOpenProfile,
             onOpenPro = onOpenPro,
             onOpenRecord = onOpenRecord,
@@ -90,11 +138,37 @@ fun HomeScreen(
         )
     }
 
-    if (state.captureVisible) {
-        CaptureSheet(
-            state = state,
-            onIntent = viewModel::sendIntent,
-            onDismiss = { viewModel.sendIntent(HomeIntent.DismissCapture) },
+    // 录入弹窗（选餐次 + 拍照/相册），覆盖首页
+    if (showCaptureSheet) {
+        ModalBottomSheet(
+            onDismissRequest = { showCaptureSheet = false },
+            containerColor = chopCalColors.screen,
+            scrimColor = Color.Black.copy(alpha = 0.4f),
+        ) {
+            CaptureSheetContent(
+                target = selectedTarget,
+                onSelectTarget = { selectedTarget = it },
+                onLaunchCamera = launchCamera,
+                onLaunchAlbum = launchAlbum,
+            )
+        }
+    }
+
+    // 相机页显示时，手势返回关闭相机页（而非触发首页双击退出）
+    BackHandler(enabled = showCamera) { showCamera = false }
+
+    // 自定义相机页
+    if (showCamera) {
+        val mealLabel = (selectedTarget as? CaptureMealTarget.Meal)?.mealType?.let { stringResource(it.labelRes) }.orEmpty()
+        CameraCaptureScreen(
+            title = stringResource(R.string.capture_shooting, mealLabel),
+            onCaptured = { uri ->
+                showCamera = false
+                showCaptureSheet = false
+                onOpenRecognize(selectedTarget, state.selectedDateEpochDay, uri.toString())
+            },
+            onPickFromAlbum = launchAlbum,
+            onBack = { showCamera = false },
         )
     }
 
@@ -133,6 +207,7 @@ fun HomeScreen(
 internal fun HomeContent(
     state: HomeUiState,
     onIntent: (HomeIntent) -> Unit,
+    onOpenRecognize: (CaptureMealTarget) -> Unit,
     onOpenProfile: () -> Unit,
     onOpenPro: () -> Unit,
     onOpenRecord: () -> Unit,
@@ -210,7 +285,7 @@ internal fun HomeContent(
         )
         MealSection(
             meals = state.summary.perMeal,
-            onMealClick = { mealType -> onIntent(HomeIntent.OpenCaptureForMeal(mealType)) },
+            onMealClick = { mealType -> onOpenRecognize(CaptureMealTarget.Meal(mealType)) },
             modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
         )
 
@@ -303,6 +378,137 @@ private fun FloatingAddButton(onClick: () -> Unit) {
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier.padding(start = 6.dp),
+        )
+    }
+}
+
+/** 按当地时间默认选中餐次。 */
+private fun defaultMealByTime(): MealType {
+    val now = LocalTime.now()
+    return MealType.fromTime(now.hour, now.minute)
+}
+
+// ── 录入弹窗内容（选餐次 + 拍照/相册） ────────────────────────
+
+@Composable
+private fun CaptureSheetContent(
+    target: CaptureMealTarget,
+    onSelectTarget: (CaptureMealTarget) -> Unit,
+    onLaunchCamera: () -> Unit,
+    onLaunchAlbum: () -> Unit,
+) {
+    Column(Modifier.padding(horizontal = 20.dp, vertical = 8.dp)) {
+        Text(
+            text = stringResource(R.string.capture_title),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = chopCalColors.ink,
+        )
+
+        Row(
+            modifier = Modifier
+                .padding(top = 14.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            MealType.entries.forEach { mealType ->
+                MealTab(
+                    label = stringResource(mealType.labelRes),
+                    selected = target == CaptureMealTarget.Meal(mealType),
+                    onClick = { onSelectTarget(CaptureMealTarget.Meal(mealType)) },
+                    modifier = Modifier.weight(1f),
+                )
+            }
+            MealTab(
+                label = stringResource(R.string.capture_query_only),
+                selected = target == CaptureMealTarget.QueryOnly,
+                onClick = { onSelectTarget(CaptureMealTarget.QueryOnly) },
+                modifier = Modifier.weight(1f),
+            )
+        }
+
+        HorizontalDivider(color = chopCalColors.line, modifier = Modifier.padding(vertical = 16.dp))
+
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            InputMethodRow(
+                icon = "📷",
+                label = stringResource(R.string.input_camera),
+                enabled = true,
+                onClick = onLaunchCamera,
+            )
+            InputMethodRow(
+                icon = "🖼",
+                label = stringResource(R.string.input_album),
+                enabled = true,
+                onClick = onLaunchAlbum,
+            )
+            InputMethodRow(
+                icon = "▦",
+                label = stringResource(R.string.input_barcode) + "  " + stringResource(R.string.phase_two),
+                enabled = false,
+                onClick = {},
+            )
+            InputMethodRow(
+                icon = "⌨️",
+                label = stringResource(R.string.input_text_voice) + "  " + stringResource(R.string.phase_two),
+                enabled = false,
+                onClick = {},
+            )
+        }
+    }
+}
+
+@Composable
+private fun MealTab(
+    label: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .background(
+                color = if (selected) chopCalColors.surfaceMint else Color.Transparent,
+                shape = RoundedCornerShape(12.dp),
+            )
+            .clickable(onClick = onClick)
+            .padding(vertical = 9.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = label,
+            fontSize = 11.sp,
+            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+            color = if (selected) chopCalColors.forestGreen else chopCalColors.inkMuted,
+        )
+    }
+}
+
+@Composable
+private fun InputMethodRow(
+    icon: String,
+    label: String,
+    enabled: Boolean,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                color = if (enabled) chopCalColors.card else Color.Transparent,
+                shape = RoundedCornerShape(14.dp),
+            )
+            .clickable(enabled = enabled, onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(text = icon, fontSize = 16.sp)
+        Text(
+            text = label,
+            fontSize = 13.sp,
+            fontWeight = if (enabled) FontWeight.Medium else FontWeight.Normal,
+            color = if (enabled) chopCalColors.ink else chopCalColors.inkFaint,
+            modifier = Modifier.padding(start = 12.dp),
         )
     }
 }

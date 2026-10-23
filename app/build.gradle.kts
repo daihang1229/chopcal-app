@@ -100,4 +100,16 @@ dependencies {
     // 图表
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m3)
+
+    // 相机（CameraX）
+    implementation(libs.camera.core)
+    implementation(libs.camera.camera2)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.view)
+
+    // 导航
+    implementation(libs.navigation.compose)
+
+    // 单元测试
+    testImplementation(libs.junit)
 }

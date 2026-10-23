@@ -6,6 +6,7 @@ import com.chopcal.app.data.db.entity.DailyMetricEntity
 import com.chopcal.app.data.db.entity.MealRecordEntity
 import com.chopcal.app.domain.model.DailyMetric
 import com.chopcal.app.domain.model.MealRecord
+import com.chopcal.app.domain.model.MealType
 import com.chopcal.app.domain.repository.RecordRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -36,8 +37,20 @@ class RecordRepositoryImpl @Inject constructor(
         mealRecordDao.insert(MealRecordEntity.fromDomain(record))
     }
 
+    override suspend fun saveMeals(records: List<MealRecord>) {
+        if (records.isEmpty()) return
+        mealRecordDao.insertAll(records.map { MealRecordEntity.fromDomain(it) })
+    }
+
     override suspend fun deleteMeal(id: Long) {
         mealRecordDao.byId(id)?.let { mealRecordDao.delete(it) }
+    }
+
+    override suspend fun mealsFor(dateEpochDay: Long, mealType: MealType): List<MealRecord> =
+        mealRecordDao.byDateAndType(dateEpochDay, mealType.name).map { it.toDomain() }
+
+    override suspend fun deleteMeals(dateEpochDay: Long, mealType: MealType) {
+        mealRecordDao.deleteByDateAndType(dateEpochDay, mealType.name)
     }
 
     override suspend fun setWaterMl(dateEpochDay: Long, ml: Int) {

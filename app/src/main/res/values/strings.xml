@@ -193,6 +193,7 @@
 
     <!-- Capture sheet -->
     <string name="capture_title">Log this meal</string>
+    <string name="capture_shooting">Shoot %1$s</string>
     <string name="capture_query_only">Identify only</string>
     <string name="input_camera">Camera</string>
     <string name="input_album">Album</string>
@@ -202,6 +203,10 @@
     <string name="recognizing_text">Recognizing this meal…</string>
     <string name="candidates_title">Which dish is this?</string>
     <string name="not_this_dish">None of these</string>
+    <string name="retake">Retake photo</string>
+    <string name="method_more">More ⌄</string>
+    <string name="method_sheet_title">Cooking method</string>
+    <string name="method_sheet_hint">Different methods change oil and sugar usage</string>
     <string name="label_portion">Portion</string>
     <string name="label_method">Cooking method</string>
     <string name="label_servings">Servings</string>
@@ -210,6 +215,23 @@
     <string name="result_ingredients">Ingredients</string>
     <string name="result_save">Save to meal</string>
     <string name="result_got_it">Got it</string>
+    <string name="health_tip_hint">Updates every 5s · Local health tips</string>
+    <string name="ingredient_edit">Edit</string>
+    <string name="ingredient_delete">Delete</string>
+    <string name="ingredient_weight">Weight (g)</string>
+    <string name="result_target_percent">%1$d%% of daily target</string>
+    <string name="result_remaining">%1$d kcal left today after this meal</string>
+    <string name="add_ingredient">Add ingredient</string>
+    <string name="search_dish_title">Search dish</string>
+    <string name="search_dish_hint">Enter dish name</string>
+    <string name="search_ingredient_hint">Search ingredient</string>
+    <string name="search_not_found">Not found? Add ingredients manually</string>
+    <string name="result_add_dish">＋ Add another dish</string>
+    <string name="save_conflict_title">%1$s already logged</string>
+    <string name="save_conflict_desc">%1$d kcal · %2$d dish(es) logged</string>
+    <string name="save_conflict_question">How to proceed?</string>
+    <string name="save_add">Add to %1$s</string>
+    <string name="save_replace">Replace %1$s</string>
 
     <!-- Pro -->
     <string name="pro_title">ChopCal Pro</string>

@@ -63,6 +63,7 @@ private fun HomeScreenPreview() {
         HomeContent(
             state = previewState(),
             onIntent = {},
+            onOpenRecognize = {},
             onOpenProfile = {},
             onOpenPro = {},
             onOpenRecord = {},

@@ -30,11 +30,4 @@ enum class Portion(@StringRes val labelRes: Int, val factor: Double) {
     LARGE(R.string.portion_large, 1.3),
 }
 
-/**
- * 做法。系数对齐「热量计算规则」：少油 0.95 / 正常 1.0 / 油炸 1.3。
- */
-enum class CookingMethod(@StringRes val labelRes: Int, val factor: Double) {
-    LESS_OIL(R.string.method_less_oil, 0.95),
-    NORMAL(R.string.method_normal, 1.0),
-    FRIED(R.string.method_fried, 1.3),
-}
+

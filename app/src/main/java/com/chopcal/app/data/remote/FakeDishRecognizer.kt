@@ -1,7 +1,7 @@
 package com.chopcal.app.data.remote
 
-import com.chopcal.app.domain.model.DishCandidate
 import com.chopcal.app.domain.model.Dish
+import com.chopcal.app.domain.model.DishCandidate
 import com.chopcal.app.domain.repository.DishRecognizer
 import com.chopcal.app.domain.repository.DishRepository
 import kotlinx.coroutines.delay
@@ -9,10 +9,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * 识别源 Fake 实现（MVP 占位）。
+ * 识别源 Fake 实现（M1 占位）。
  *
  * 不调真实多模态 LLM，而是从菜品库取前 3 道作为候选，模拟置信度降序。
- * 后续替换为 Qwen-VL 识别（RecognizeRemoteSource 真实现）。
+ * 后续替换为 Qwen-VL 识别（RecognizeRemoteSource 真实现，TODO-AI）。
  */
 @Singleton
 class FakeDishRecognizer @Inject constructor(
@@ -43,11 +43,8 @@ class FakeDishRecognizer @Inject constructor(
 
     private fun Dish.toCandidate(confidence: Int): DishCandidate = DishCandidate(
         name = name,
+        nameEn = null,
         confidence = confidence,
-        baseKcal = baseKcal,
-        proteinG = proteinG,
-        carbsG = carbsG,
-        fatG = fatG,
-        ingredients = ingredients,
+        matchedDish = this,
     )
 }

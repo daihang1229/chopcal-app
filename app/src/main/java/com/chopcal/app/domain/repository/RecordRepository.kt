@@ -2,6 +2,7 @@ package com.chopcal.app.domain.repository
 
 import com.chopcal.app.domain.model.DailyMetric
 import com.chopcal.app.domain.model.MealRecord
+import com.chopcal.app.domain.model.MealType
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -23,7 +24,16 @@ interface RecordRepository {
 
     suspend fun saveMeal(record: MealRecord)
 
+    /** 批量保存（一餐多菜）。 */
+    suspend fun saveMeals(records: List<MealRecord>)
+
     suspend fun deleteMeal(id: Long)
+
+    /** 某日某餐已有的记录（用于「添加/替换」判断）。 */
+    suspend fun mealsFor(dateEpochDay: Long, mealType: MealType): List<MealRecord>
+
+    /** 删除某日某餐的全部记录（「替换」语义）。 */
+    suspend fun deleteMeals(dateEpochDay: Long, mealType: MealType)
 
     suspend fun setWaterMl(dateEpochDay: Long, ml: Int)
 

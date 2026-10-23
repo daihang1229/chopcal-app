@@ -16,7 +16,8 @@ data class CalorieResult(
     val proteinG: Int,
     val carbsG: Int,
     val fatG: Int,
-    val ingredients: List<IngredientLine>,
+    /** 食材明细（含每行营养），用于可解释性展示。 */
+    val lines: List<RecipeLine>,
     /** 可解释性文案：为什么是这个热量。 */
     val explanation: String,
 )

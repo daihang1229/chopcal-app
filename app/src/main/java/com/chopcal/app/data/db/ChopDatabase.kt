@@ -11,7 +11,7 @@ import com.chopcal.app.data.db.entity.WeightEntryEntity
 
 @Database(
     entities = [MealRecordEntity::class, DailyMetricEntity::class, WeightEntryEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false,
 )
 abstract class ChopDatabase : RoomDatabase() {
